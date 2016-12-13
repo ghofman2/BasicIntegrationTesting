@@ -29,5 +29,7 @@ namespace Vault.Data
     public virtual DbSet<Folder> Folders { get; set; }
 
     public virtual DbSet<File> Files { get; set; }
+
+    public virtual DbSet<CustomField> CustomFields { get; set; }
   }
 }

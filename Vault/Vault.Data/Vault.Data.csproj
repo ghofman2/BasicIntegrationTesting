@@ -60,8 +60,14 @@
     <Compile Include="Migrations\201612102230165_Vault_initial.Designer.cs">
       <DependentUpon>201612102230165_Vault_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612131610078_CustomFields.cs" />
+    <Compile Include="Migrations\201612131610078_CustomFields.Designer.cs">
+      <DependentUpon>201612131610078_CustomFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base\Entity.cs" />
+    <Compile Include="Models\CustomField.cs" />
+    <Compile Include="Models\Enums\DataTypes.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\Cabinet.cs" />
@@ -85,6 +91,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612102230165_Vault_initial.resx">
       <DependentUpon>201612102230165_Vault_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131610078_CustomFields.resx">
+      <DependentUpon>201612131610078_CustomFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

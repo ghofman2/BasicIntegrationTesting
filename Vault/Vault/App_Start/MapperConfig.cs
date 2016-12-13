@@ -11,11 +11,11 @@ namespace Vault.App_Start
     {
       Mapper.Initialize(x =>
       {
-        x.CreateMap<Folder, FolderModel>().PreserveReferences().ReverseMap().PreserveReferences();
-
         x.CreateMap<Cabinet, CabinetModel>().PreserveReferences().ReverseMap().PreserveReferences();
 
-        x.CreateMap<FileModel, File>().PreserveReferences().ReverseMap().PreserveReferences();
+        x.CreateMap<Folder, FolderModel>().PreserveReferences().ReverseMap().PreserveReferences();
+
+        x.CreateMap<File, FileModel>().PreserveReferences().ReverseMap().PreserveReferences();
       });
     }
   }

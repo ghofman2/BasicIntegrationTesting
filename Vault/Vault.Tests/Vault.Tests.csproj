@@ -110,7 +110,7 @@
     <Compile Include="IntegrationTests\FileRepositoryTest.cs" />
     <Compile Include="IntegrationTests\FolderRepositoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UnitTests\HomeControllerTest.cs" />
+    <Compile Include="UnitTests\CabinetControllerTest.cs" />
     <Compile Include="IntegrationTests\CabinetRepositoryTest.cs" />
   </ItemGroup>
   <ItemGroup>
