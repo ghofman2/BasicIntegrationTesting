@@ -1,0 +1,23 @@
+﻿@model Vault.Data.Models.CustomField
+
+<div class="col-xs-12" data-rowid=@Model.FieldNumber>
+    <div class="col-xs-4">
+      <div class="editor-field">
+        @Html.DisplayFor(model => model.FieldNumber, new { @class = "fieldNumber" })
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="editor-field">
+        @Html.EditorFor(model => model.FieldName)
+        @Html.ValidationMessageFor(model => model.FieldName)
+      </div>
+    </div>
+
+    <div class="col-xs-4">
+      <div class="editor-field">
+        @Html.EnumDropDownListFor(model => model.DbType)
+        @Html.ValidationMessageFor(model => model.DbType)
+      </div>
+    </div>
+</div>

@@ -26,38 +26,38 @@ namespace Vault.Data.Migrations
       //  Debugger.Launch();
       //}
 
-      SeedStories(db);
+      SeedCabinets(db);
     }
 
-    private void SeedStories(VaultContext db)
+    private void SeedCabinets(VaultContext db)
     {
       try
       {
-        var storiesExist = db.Cabinets.Any();
+        var cabinetsExist = db.Cabinets.Any();
 
-        if (!storiesExist)
+        if (!cabinetsExist)
         {
           //add a story with some characters so we have something to start with
-          var story = new Cabinet
+          var cabinet = new Cabinet
           {
             Folders = new List<Folder>(),
-            Name = "How the Grinch Stole Christmas!"
+            Name = "Test Seeded Cabinet!"
           };
 
-          var grinch = new Folder
+          var folderOne = new Folder
           {
-            Name = "Grinch"
+            Name = "Storage Folder One"
           };
 
-          var cindyLou = new Folder
+          var folderTwo = new Folder
           {
-            Name = "Cindy Lou Who"
+            Name = "Storage Folder Two"
           };
 
-          story.Folders.Add(grinch);
-          story.Folders.Add(cindyLou);
+          cabinet.Folders.Add(folderOne);
+          cabinet.Folders.Add(folderTwo);
 
-          db.Cabinets.Add(story);
+          db.Cabinets.Add(cabinet);
 
           db.SaveChanges();
         }

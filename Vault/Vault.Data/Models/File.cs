@@ -9,6 +9,12 @@ namespace Vault.Data.Models
 {
   public class File : Entity
   {
+
+    public File()
+    {
+      CreationDate = DateTime.UtcNow;
+    }
+
     public String Name { get; set; }
 
     public int FolderId { get; set; }
@@ -23,6 +29,6 @@ namespace Vault.Data.Models
 
     public int Pages { get; set; }
 
-    public string IsDeleted { get; set; }
+    public int IsDeleted { get; set; }
   }
 }

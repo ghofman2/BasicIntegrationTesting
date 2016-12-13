@@ -13,7 +13,7 @@ namespace Vault.Data.Models
 
     public virtual ICollection<File> Files { get; set; }
 
-    public string IsDeleted { get; set; }
+    public int IsDeleted { get; set; }
 
     #region CustomFields
     public string Field1 { get; set; }

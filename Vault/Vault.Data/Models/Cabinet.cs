@@ -7,7 +7,7 @@ namespace Vault.Data.Models
   {
     public string Name { get; set; }
 
-    public string IsDeleted { get; set; }
+    public int IsDeleted { get; set; }
 
     public virtual ICollection<Folder> Folders { get; set; }
 

@@ -1,0 +1,98 @@
+﻿@model Vault.Data.ViewModels.CabinetModel
+
+@{
+  ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm("Create", "Cabinet", FormMethod.Post, new { id= "createCabinetForm" }))
+{
+  @Html.AntiForgeryToken()
+
+  <div class="form-horizontal">
+    <h4>CabinetModel</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+      @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-10">
+        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+      </div>
+    </div>
+
+    <div id="customFieldsContainer">
+    </div>
+
+    <input id="addFieldBtn" name="addFieldBtn" type="button" value="Add Cabinet Field" class="btn btn-default" />
+
+    <div class="form-group">
+      <div class="col-md-offset-2 col-md-10">
+        <input id="submitBtn" name="submitBtn" type="button" value="Submit" class="btn btn-default" />
+      </div>
+    </div>
+  </div>
+}
+
+<div>
+  @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section scripts{
+<script>
+  var fieldNumberCount = 1;
+
+    $("#addFieldBtn").on('click', function () {
+
+      //only allow 20 custom fields
+        if (fieldNumberCount < 21) {
+          $.ajax({
+            type: "GET",
+            url: '/Cabinet/GenerateCustomField?fieldNumber=' + fieldNumberCount,
+            success: function (newCustomField) {
+              var tableBody = $('#customFieldsContainer').append(newCustomField);
+              fieldNumberCount++;
+            },
+            error: function (msg) {
+              console.log(msg);
+            }
+          })
+        }
+
+      });
+
+  //json custom field constructor
+  function CustomField(fieldNumber, fieldName, dataType) {
+    this.FieldNumber = fieldNumber;
+    this.FieldName = fieldName;
+    this.DbType = dataType;
+  }
+
+  $("#submitBtn").on('click', function () {
+    var customFields = [];
+    var fieldNumber = 1;
+    //build CustomField json
+    $('[data-rowid]').each(function () {
+      var fieldName = $(this).find('#FieldName').val();
+      var fieldType = $(this).find('#DbType').val();
+      customFields.push(new CustomField(fieldNumber, fieldName, fieldType));
+      fieldNumber++;
+    });
+
+    $.ajax({
+      type: "POST",
+      url: '/Cabinet/Create',
+      data: {
+        cabinetName : $("#Name").val(),
+        customFields : customFields
+      },
+      error: function (msg) {
+        console.log(msg);
+      }
+    })
+
+  });
+  
+</script>
+}
