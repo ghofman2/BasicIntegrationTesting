@@ -22,5 +22,7 @@ namespace Vault.Data.Models
     public DateTime CreationDate { get; set; }
 
     public int Pages { get; set; }
+
+    public string IsDeleted { get; set; }
   }
 }

@@ -64,6 +64,10 @@
     <Compile Include="Migrations\201612131610078_CustomFields.Designer.cs">
       <DependentUpon>201612131610078_CustomFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612131619314_IsDeletedFields.cs" />
+    <Compile Include="Migrations\201612131619314_IsDeletedFields.Designer.cs">
+      <DependentUpon>201612131619314_IsDeletedFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base\Entity.cs" />
     <Compile Include="Models\CustomField.cs" />
@@ -94,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612131610078_CustomFields.resx">
       <DependentUpon>201612131610078_CustomFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612131619314_IsDeletedFields.resx">
+      <DependentUpon>201612131619314_IsDeletedFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
