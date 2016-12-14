@@ -251,6 +251,10 @@
     <Content Include="Scripts\jquery-3.1.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CommonLibrary\CommonLibrary.csproj">
+      <Project>{35ee89d5-5610-44cb-ba6b-14d063a89df2}</Project>
+      <Name>CommonLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vault.Data\Vault.Data.csproj">
       <Project>{185c5d06-1eaf-40c1-894e-f294172ff682}</Project>
       <Name>Vault.Data</Name>

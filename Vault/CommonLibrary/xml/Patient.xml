@@ -1,0 +1,1001 @@
+<?xml version="1.0"?>
+<Patient xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--Minimal demographic are needed.  The MDI import process does not create or modify patienet demographics-->
+
+  <Demographics>
+    <!--This field is used to match the patient on the MDI chart number-->
+    <MedicalRecordNumber>7575</MedicalRecordNumber>
+    <!--Not used, only present for debugging purposes-->
+    <LastName>DOE</LastName>
+    <!--Not used, only present for debugging purposes-->
+    <FirstName>JANE</FirstName>
+    <!--Not used, only present for debugging purposes-->
+    <BirthDate>1934-10-18T00:00:00</BirthDate>
+    <!--Not used, only present for debugging purposes-->
+    <Gender>Female</Gender>
+  </Demographics>
+  <!--Imported as text, external to encounters in MDI, patient may have multiple treatment notes-->
+  <!--For ex, IO this was ophthalmic history-->
+
+  <TreatmentNotes>
+    <!--Imported as text-->
+    <TreatmentNote>Note 1</TreatmentNote>
+    <!--Imported as text-->
+    <TreatmentNote>Note 2</TreatmentNote>
+  </TreatmentNotes>
+
+  <!--Single top level encounter element will contain all patient encounters-->
+  <Encounters>
+    <!--ID for reference only and not used by MDI import process, DoctorId required from structured list provided by MDI, datetime valid in consistent format-->
+    <Encounter ID="113598" DoctorId="1" Date="2014-08-05T00:00:00">
+      <!--Imported as text-->
+
+      <ChiefComplaint>NPDR</ChiefComplaint>
+      <!--Imported as text-->
+
+      <HistoryOfThePresentIllness>H/O  moderate NPDR. Can't recall BS. Feels vision is getting worse.</HistoryOfThePresentIllness>
+      <!--All PSFH data is imported as text, some structured catagorization is necessary as noted below for family history-->
+
+      <PSFH>
+        <MedicalHistories>
+          <MedicalHistory>
+            <!--Imported as text-->
+            <Description>Med History 1</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-02-02T00:00:00</Date>
+          </MedicalHistory>
+          <MedicalHistory>
+            <!--Imported as text-->
+            <Description>Med History 2</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-02-01T00:00:00</Date>
+          </MedicalHistory>
+          <MedicalHistory>
+            <!--Imported as text-->
+            <Description>Med History 3 (No date entered)</Description>
+          </MedicalHistory>
+        </MedicalHistories>
+        <FamilyHistories>
+          <FamilyHistory>
+            <!--Imported as text-->
+            <Description>Family History 1</Description>
+            <Note>Note 1</Note>
+            <Relationships>
+              <!--Relationship structured list to be provided by MDI-->
+              <!--Not Required-->
+              <Relationship RelationshipId="1">Mother</Relationship>
+              <!--Relationship structured list to be provided by MDI-->
+              <!--Not Required-->
+              <Relationship RelationshipId="2">Father</Relationship>
+            </Relationships>
+          </FamilyHistory>
+          <FamilyHistory>
+            <!--Imported as text-->
+            <Description>Family History 2</Description>
+            <Note>Note 2</Note>
+            <Relationships>
+              <!--Relationship structured list to be provided by MDI-->
+              <!--Not Required-->
+              <Relationship RelationshipId="3">Brother</Relationship>
+              <!--Relationship structured list to be provided by MDI-->
+              <!--Not Required-->
+              <Relationship RelationshipId="4">Sister</Relationship>
+            </Relationships>
+          </FamilyHistory>
+          <FamilyHistory>
+            <!--Imported as text-->
+            <Description>Family History 3 (Only description)</Description>
+          </FamilyHistory>
+        </FamilyHistories>
+        <SocialHistories>
+          <!--FindingId and CategoryId required for Smoking Status-->
+          <SocialHistory CategoryId="3" FindingId="89">Never Smoker</SocialHistory>
+          <!--FindingId and CategoryId required for Smoking Status-->
+          <SocialHistory CategoryId="4" FindingId="9">Occassional Drink</SocialHistory>
+          <!--FindingId and CategoryId required for Smoking Status-->
+          <SocialHistory CategoryId="0" FindingId="0">Social History 1</SocialHistory>
+        </SocialHistories>
+        <SurgicalHistories>
+          <SurgicalHistory>
+            <!--Imported as text-->
+            <Description>Surgical History 1</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-01-01T00:00:00</Date>
+          </SurgicalHistory>
+          <SurgicalHistory>
+            <!--Imported as text-->
+            <Description>Surigcal History 2</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-01-02T00:00:00</Date>
+          </SurgicalHistory>
+          <SurgicalHistory>
+            <!--Imported as text-->
+            <Description>Surigcal History 3 (No date entered)</Description>
+          </SurgicalHistory>
+        </SurgicalHistories>
+        <AllergyHistories>
+          <AllergyHistory>
+            <!--Imported as text-->
+            <Description>Allergy 1</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-01-01T00:00:00</Date>
+          </AllergyHistory>
+          <AllergyHistory>
+            <!--Imported as text-->
+            <Description>Allergy 2</Description>
+            <!--Valid datetime in consistent format-->
+            <Date>2015-01-02T00:00:00</Date>
+          </AllergyHistory>
+          <AllergyHistory>
+            <!--Imported as text-->
+            <Description>Allergy 3 (No date entered)</Description>
+          </AllergyHistory>
+        </AllergyHistories>
+        <ROSHistories>
+          <!--Imported as text-->
+          <ROSHistory>ROS 1</ROSHistory>
+          <!--Imported as text-->
+          <ROSHistory>ROS 2</ROSHistory>
+        </ROSHistories>
+      </PSFH>
+      <!--
+      WARNING, THIS IS ALL THE FARTHER I GOT WHEN CONVERTING THIS. 
+      Above this point comments are as such ex:
+      
+      < ! - - Petunias can only be one color, purple - - >
+      <Petunias>Blue</Petunias>
+      <thisisagreatline>yes it is</<thisisagreatline>
+      
+      Below this point comments are as such:
+      
+      <Petunias>Blue</Petunias>
+      < ! - - Petunias can only be one color, purple - - >
+      <thisisagreatline>yes it is</<thisisagreatline>
+      
+      -->
+      <Medications>
+        <!--Imported as structured data based on RXNorm, NDC or DrugName, if no match will be imported as text-->
+        <Medication IsOcular="true">
+          <!--Medications must be grouped as either Ocular or Systemic, multiple medications of either category is supported-->
+          <DrugName>Pred Forte 1% (Med 1)</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="1">1</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="6">DROP</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="1" NonOcularAdministerId="1">OU</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="1">prn</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments>3 REFILL, DAW, 1 BOTTLE</Comments>
+          <!--Imported as text-->
+          <NewOrder>true</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-01-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-01-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm></RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+            <NDC>53002084872</NDC>
+            <!--Valid NDC code if used-->
+            <NDC>53002084871</NDC>
+            <!--Valid NDC code if used-->
+          </NDCs>
+        </Medication>
+        <Medication IsOcular="true">
+          <!--Medications must be grouped as either Ocular or Systemic, multiple medications of either category is supported-->
+          <DrugName>Ciprofloxacin , 0.3% (Med 2)</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="7">3/4</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="4">mg</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="3" NonOcularAdministerId="1">OS</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="3">QHS</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments>3 REFILL, DAW, 1 BOTTLE</Comments>
+          <!--Imported as text-->
+          <NewOrder>true</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-02-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-02-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm>309307</RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+            <NDC>33261011620</NDC>
+            <!--Valid NDC code if used-->
+            <NDC>67544031715</NDC>
+            <!--Valid NDC code if used-->
+          </NDCs>
+        </Medication>
+        <Medication IsOcular="false">
+          <!--Medications must be grouped as either Ocular or Systemic-->
+          <DrugName>levothyroxine sodium 125 MCG Oral Tablet (Med 3)</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="18">20</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="9">puff</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="1" NonOcularAdministerId="1">po</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="15">qam</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments></Comments>
+          <!--Imported as text-->
+          <NewOrder>false</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-03-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-03-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm>966224</RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+            <NDC>79854051281</NDC>
+            <!--Valid NDC code if used-->
+            <NDC>00002323733</NDC>
+            <!--Valid NDC code if used-->
+          </NDCs>
+        </Medication>
+        <Medication IsOcular="false">
+          <!--Medications must be grouped as either Ocular or Systemic-->
+          <DrugName>Vitamin B9 (Folic Acid) 1 Mg Oral Tablet (Med 4)</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="3">3</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="2">tablet</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="1" NonOcularAdministerId="3">IM</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="42">qweek</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments></Comments>
+          <!--Imported as text-->
+          <NewOrder>false</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-04-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-04-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm></RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+            <NDC>79854051281</NDC>
+            <!--Valid NDC code if used-->
+            <NDC>00002323733</NDC>
+            <!--Valid NDC code if used-->
+          </NDCs>
+        </Medication>
+        <Medication IsOcular="true">
+          <!--Medications must be grouped as either Ocular or Systemic, multiple medications of either category is supported-->
+          <DrugName>Pred Forte 1%</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="1">1</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="6">DROP</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="1" NonOcularAdministerId="1">OU</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="1">prn</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments>5th Med, no NDC or RxNorm entered</Comments>
+          <!--Imported as text-->
+          <NewOrder>true</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-05-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-05-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm></RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+          </NDCs>
+        </Medication>
+        <Medication IsOcular="false">
+          <!--Medications must be grouped as either Ocular or Systemic-->
+          <DrugName>Vitamin B9 (Folic Acid) 1 Mg Oral Tablet</DrugName>
+          <!--Will be used to link medications if RxNorm and NDC's are not found-->
+          <Dose DoseId="3">3</Dose>
+          <!--Dose structured data list to be provided by MDI-->
+          <DoseUnit DoseUnitId="2">tablet</DoseUnit>
+          <!--Dose unit structured list to be provided by MDI-->
+          <Administer AdministerId="1" NonOcularAdministerId="3">IM</Administer>
+          <!--Admininster structured list to be provided by MDI-->
+          <Schedule ScheduleId="42">qweek</Schedule>
+          <!--Schedule structured list to be provided by MDI-->
+          <Comments>6th med, no NDC or RxNorm entered</Comments>
+          <!--Imported as text-->
+          <NewOrder>false</NewOrder>
+          <!--Boolean, true = med is new order, false = med is not new order-->
+          <StartDate>2015-06-01T00:00:00</StartDate>
+          <!--Valid datetime in consistent format-->
+          <DCDate>2015-06-02T00:00:00</DCDate>
+          <!--Valid datetime in consistent format-->
+          <RxNorm></RxNorm>
+          <!--Preferred method to link medications-->
+          <NDCs>
+            <!--Will be used to link medication if RxNorm is not found-->
+          </NDCs>
+        </Medication>
+      </Medications>
+
+      <VisualAcuities>
+        <!--Imported as categorized text-->
+        <VisualAcuity VisualAcuityID="1">
+          <!--Visual acuity structured list to be provided by MDI-->
+          <Description>Dcc</Description>
+          <!--Not used, only present for debugging purposes-->
+          <OS>20/50</OS>
+          <!--Imported as text-->
+          <OD>20/20-1</OD>
+          <!--imported as text-->
+          <OU>20/40</OU>
+          <!--imported as text-->
+        </VisualAcuity>
+        <VisualAcuity VisualAcuityID="2">
+          <!--Visual acuity structured list to be provided by MDI-->
+          <Description>Dsc</Description>
+          <!--Not used, only present for debugging purposes-->
+          <OS>20/50</OS>
+          <!--Imported as text-->
+          <OD>20/20-1</OD>
+          <!--Imported as text-->
+          <OU>20/40+1</OU>
+          <!--imported as text-->
+        </VisualAcuity>
+        <VisualAcuity VisualAcuityID="0">
+          <!--Visual acuity structured list to be provided by MDI-->
+          <Description>Dsc</Description>
+          <!--Not used, only present for debugging purposes-->
+          <OS>20/50</OS>
+          <!--Imported as text-->
+          <OD>20/20-2</OD>
+          <!--Imported as text-->
+          <OU>20/40+2</OU>
+          <!--imported as text-->
+        </VisualAcuity>
+      </VisualAcuities>
+
+      <IOPs>
+        <!--Imported as categorized text-->
+        <IOP IOPMethodID="2">
+          <!--IOP method structured list to be provided by MDI, if not populated with IOPMethodId import will default to practices default method-->
+          <Description>Tono Pen</Description>
+          <!--Not used, only present for debugging purposes-->
+          <OD>16</OD>
+          <!--Imported as text-->
+          <OS>17</OS>
+          <!--Imported as text-->
+          <DateTime>2015-02-02T12:13:00</DateTime>
+          <!--Only time is used-->
+        </IOP>
+        <IOP IOPMethodID="0">
+          <!--IOP method structured list to be provided by MDI, if not populated with IOPMethodId import will default to practices default method-->
+          <Description>FT</Description>
+          <!--Not used, only present for debugging purposes-->
+          <OD>15</OD>
+          <!--Imported as text-->
+          <OS>14</OS>
+          <!--Imported as text-->
+          <DateTime>2015-02-02T12:15:00</DateTime>
+          <!--Only time is used-->
+        </IOP>
+      </IOPs>
+
+      <Dilation>
+        <!--Imported as categorized text-->
+        <EyeLocation>OD</EyeLocation>
+        <!--Values must be OD, OU or OS-->
+        <DateTime>2015-02-02T12:15:00</DateTime>
+        <!--Valid datetime in consistent format-->
+        <Drops>
+          <Drop DropId="3">Pheneylephrine 2.5%</Drop>
+          <!--Drop structured list to be provided by MDI-->
+          <!--Name is not imported-->
+          <Drop DropId="2">Tropicamide 1%</Drop>
+          <!--Drop structured list to be provided by MDI-->
+          <!--Name is not imported-->
+        </Drops>
+      </Dilation>
+
+      <Refractions>
+        <!--Imported as categorized text-->
+        <Refraction RefractionId="37">
+          <!--Refractions structured list to be provided by MDI-->
+          <SphereOD>Ref1_SphOD</SphereOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOD>Ref1_CylOD</CylinderOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOD>Ref1_AxisOD</AxisOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOD>Ref1_VADistOD</VisualActuityDistanceOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOD>Ref1_VANearOD</VisualActuityNearOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOD>Ref1_PrismOD</PrismOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOD>Ref1_AddOD</AddOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOD>Ref1_CommentOD</CommentOD>
+          <!--Imported as text-->
+          <SphereOS>Ref1_SphOS</SphereOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOS>Ref1_CylOS</CylinderOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOS>Ref1_AxisOS</AxisOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOS>Ref1_VADistOS</VisualActuityDistanceOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOS>Ref1_VANearOS</VisualActuityNearOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOS>Ref1_PrismOS</PrismOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOS>Ref1_AddOS</AddOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOS>Ref1_CommentOS</CommentOS>
+          <!--Imported as text-->
+          <RefractionTypeName>Wears Near</RefractionTypeName>
+          <!--Not used, only present for debugging purposes-->
+          <Date>2015-01-01T00:00:00</Date>
+          <!--Will default to encounter date unless this element is populated, valid datetime in consistent format-->
+          <OtherField>Other field</OtherField>
+          <!--Other field can put any general information about the refraction here-->
+        </Refraction>
+        <Refraction RefractionId="85">
+          <!--Refractions structured list to be provided by MDI-->
+          <SphereOD>Ref2_SphOD</SphereOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOD>Ref2_CylOD</CylinderOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOD>Ref2_AxisOD</AxisOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOD>Ref2_VADistOD</VisualActuityDistanceOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOD>Ref2_VANearOD</VisualActuityNearOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOD>Ref2_PrismOD</PrismOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOD>Ref2_AddOD</AddOD><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOD>Ref2_CommentOD</CommentOD><!--Imported as text-->
+          <SphereOS>Ref2_SphOS</SphereOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOS>Ref2_CylOS</CylinderOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOS>Ref2_AxisOS</AxisOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOS>Ref2_VADistOS</VisualActuityDistanceOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOS>Ref2_VANearOS</VisualActuityNearOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOS>Ref2_PrismOS</PrismOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOS>Ref2_AddOS</AddOS><!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOS>Ref2_CommentOS</CommentOS><!--Imported as text-->
+          <RefractionTypeName>MR Dry</RefractionTypeName><!--Not used, only present for debugging purposes-->
+          <Date>2015-01-02T00:00:00</Date><!--Will default to encounter date unless this element is populated, valid datetime in consistent format-->
+          <OtherField>Other field</OtherField>s<!--Other field can put any general information about the refraction here-->
+        </Refraction>
+      </Refractions>
+
+      <ContactLenses>
+        <!--Imported as categorized text-->
+        <ContactLens RefractionId="57">
+          <!--RefractionId structured list to be provided by MDI-->
+          <Date>2015-03-01T00:00:00</Date>
+          <!--Valid datetime in consistent format-->
+          <SphereOD>CL1_SphOD</SphereOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOD>CL1_CylOD</CylinderOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOD>CL1_AxisOD</AxisOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOD>CL1_VADistOD</VisualActuityDistanceOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOD>CL1_VANearOD</VisualActuityNearOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOD>CL1_PrismOD</PrismOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOD>CL1_AddOD</AddOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BrandNameOD>CL1_BrandNameOD</BrandNameOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BaseCurveOD>CL1_BCOD</BaseCurveOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <DiameterOD>CL1_DiaOD</DiameterOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOD>CL1_CommentOD</CommentOD>
+          <!--Imported as text-->
+          <SphereOS>CL1_SphOS</SphereOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOS>CL1_CylOS</CylinderOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOS>CL1_AxisOS</AxisOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOS>CL1_VADistOS</VisualActuityDistanceOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOS>CL1_VANearOS</VisualActuityNearOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOS>CL1_PrismOS</PrismOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOS>CL1_AddOS</AddOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BrandNameOS>CL1_BrandNameOS</BrandNameOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BaseCurveOS>CL1_BCOS</BaseCurveOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <DiameterOS>CL1_DiaOS</DiameterOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOS>CL1_CommentOS</CommentOS>
+          <!--Imported as text-->
+          <RefractionTypeName>CL S Trial 1</RefractionTypeName>
+          <!--Not used, only present for debugging purposes-->
+          <OtherField>Other field</OtherField>
+          <!--Other field can put any general information about the refraction here-->
+        </ContactLens>
+        <ContactLens RefractionId="72">
+          <!--RefractionId structured list to be provided by MDI-->
+          <Date>2025-03-02T00:00:00</Date>
+          <!--Valid datetime in consistent format-->
+          <SphereOD>CL2_SphOD</SphereOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOD>CL2_CylOD</CylinderOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOD>CL2_AxisOD</AxisOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOD>CL2_VADistOD</VisualActuityDistanceOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOD>CL2_VANearOD</VisualActuityNearOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOD>CL2_PrismOD</PrismOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOD>CL2_AddOD</AddOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BrandNameOD>CL2_BrandNameOD</BrandNameOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BaseCurveOD>CL2_BCOD</BaseCurveOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <DiameterOD>CL2_DiaOD</DiameterOD>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOD>CL2_CommentOD</CommentOD>
+          <!--Imported as text-->
+          <SphereOS>CL2_SphOS</SphereOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CylinderOS>CL2_CylOS</CylinderOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AxisOS>CL2_AxisOS</AxisOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityDistanceOS>CL2_VADistOS</VisualActuityDistanceOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <VisualActuityNearOS>CL2_VANearOS</VisualActuityNearOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <PrismOS>CL2_PrismOS</PrismOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <AddOS>CL2_AddOS</AddOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BrandNameOS>CL2_BrandNameOS</BrandNameOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <BaseCurveOS>CL2_BCOS</BaseCurveOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <DiameterOS>CL2_DiaOS</DiameterOS>
+          <!--Categorized under appropriate element in MDI, data pulled in as text-->
+          <CommentOS>CL2_CommentOS</CommentOS>
+          <!--Imported as text-->
+          <RefractionTypeName>Soft CL Rx Given</RefractionTypeName>
+          <!--Not used, only present for debugging purposes-->
+          <OtherField>Other field</OtherField>
+          <!--Other field can put any general information about the refraction here-->
+        </ContactLens>
+      </ContactLenses>
+
+      <SpecialTests>
+        <!--Imported as categorized text-->
+        <SpecialTest SpecialTestId="10">
+          <!--Special test structured list to be provided by MDI-->
+          <Name>Amsler</Name>
+          <!--Not used, only present for debugging purposes-->
+          <OD>OD Findings</OD>
+          <!--Imported as text-->
+          <OS>OS Findings. Second OS Finding.</OS>
+          <!--Imported as text-->
+        </SpecialTest>
+        <SpecialTest SpecialTestId="38">
+          <!--Special test structured list to be provided by MDI-->
+          <Name>Stereo Circles</Name>
+          <!--Not used, only present for debugging purposes-->
+          <OD>OD Finding. Second OD Finding.</OD>
+          <!--Imported as text-->
+          <OS>OS Findings.</OS>
+          <!--Imported as text-->
+        </SpecialTest>
+      </SpecialTests>
+
+      <DiagnosticTests>
+        <!--Imported as categorized text-->
+        <DiagnosticTest DiagnosticTestId="20">
+          <!--Diagnostic test structured list to be provided by MDI-->
+          <Name>OCT Macula</Name>
+          <!--Not used, only present for debugging purposes-->
+          <OD>OD Findings.</OD>
+          <!--Imported as text-->
+          <OS>OS Finding. Second OS Finding.</OS>
+          <!--Imported as text-->
+        </DiagnosticTest>
+        <DiagnosticTest DiagnosticTestId="19">
+          <!--Diagnostic test structured list to be provided by MDI-->
+          <Name>FA</Name>
+          <!--Not used, only present for debugging purposes-->
+          <OD>OD Finding. Second OD Finding.</OD>
+          <!--Imported as text-->
+          <OS>OS Findings.</OS>
+          <!--Imported as text-->
+        </DiagnosticTest>
+      </DiagnosticTests>
+
+      <Keratometry>
+        <!--Imported as text-->
+        <!--Currently only one keratometry permitted-->
+        <K1OD>K1OD</K1OD>
+        <!--Imported as text-->
+        <K1ODAxis>K1ODAxis</K1ODAxis>
+        <!--Imported as text-->
+        <K2OD>K2OD</K2OD>
+        <!--Imported as text-->
+        <K2ODAxis>K2ODAxis</K2ODAxis>
+        <!--Imported as text-->
+        <K1OS>K1OS</K1OS>
+        <!--Imported as text-->
+        <K1OSAxis>K1OSAxis</K1OSAxis>
+        <!--Imported as text-->
+        <K2OS>K2OS</K2OS>
+        <!--Imported as text-->
+        <K2OSAxis>K2OSAxis</K2OSAxis>
+        <!--Imported as text-->
+      </Keratometry>
+
+      <Pachymetries>
+        <Pachymetry>
+          <!--Imported as text-->
+          <OD>12</OD>
+          <!--Imported as text-->
+          <OS>34</OS>
+          <!--Imported as text-->
+          <Datetime>2015-01-02T14:00:00</Datetime>
+          <!--Valid datetime in consistent format-->
+          <!--Only time used-->
+        </Pachymetry>
+        <Pachymetry>
+          <!--Imported as text-->
+          <OD>56</OD>
+          <!--Imported as text-->
+          <OS>78</OS>
+          <!--Imported as text-->
+          <Datetime>2015-02-02T15:00:00</Datetime>
+          <!--Valid datetime in consistent format-->
+          <!--Only time used-->
+        </Pachymetry>
+      </Pachymetries>
+
+      <Procedures>
+        <!--Imported as text-->
+        <Procedure>
+          <Description>Procedure 1</Description>
+          <!--Imported as text-->
+          <ProcedureNotes>Procedure Note 1</ProcedureNotes>
+          <!--Imported as text-->
+          <Location Id="1">OU</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+        </Procedure>
+        <Procedure>
+          <Description>Procedure 2</Description>
+          <!--Imported as text-->
+          <ProcedureNotes>Procedure Note 2</ProcedureNotes>
+          <!--Imported as text-->
+          <Location Id="2">OD</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+        </Procedure>
+        <Procedure>
+          <Description>Procedure 3 (Only description entered)</Description>
+          <!--Imported as text-->
+        </Procedure>
+      </Procedures>
+
+      <ExternalExam>
+        <!--All finding elements imported as text-->
+        <Motilty>
+          <OD>MOtility OD.</OD>
+          <OS>Motility OS.</OS>
+        </Motilty>
+        <Pupils>
+          <OD>Pupils OD. Second OD Finding.</OD>
+          <OS>Pupils OS. Second OS Finding.</OS>
+        </Pupils>
+        <ConfrontationalVisualField>
+          <OD>CVF OD.</OD>
+          <OS>CVF OS.</OS>
+        </ConfrontationalVisualField>
+        <Adnexa>
+          <OD>Adnexa OD.</OD>
+          <OS>Adnexa OS.</OS>
+        </Adnexa>
+      </ExternalExam>
+
+      <AnteriorSegment>
+        <!--All finding elements imported as text-->
+        <LCS>
+          <OD>LCS OD.</OD>
+          <OS>LCS OS.</OS>
+        </LCS>
+        <Cornea>
+          <OD>Cornea OD.</OD>
+          <OS>Cornea OS. Second OS Finding.</OS>
+        </Cornea>
+        <AnteriorChamber>
+          <OD>AC OD.</OD>
+          <OS>AC OS.</OS>
+        </AnteriorChamber>
+        <Iris>
+          <OD>Iris OD.</OD>
+          <OS>Iris OS.</OS>
+        </Iris>
+        <Lens>
+          <OD>Lens OD.</OD>
+          <OS>Lens OS.</OS>
+        </Lens>
+        <GeneralValues>
+          <OD>General OD.</OD>
+          <OS>General OS.</OS>
+        </GeneralValues>
+      </AnteriorSegment>
+
+      <PosteriorSegment>
+        <!--All finding elements imported as text-->
+        <Nerve>
+          <OD>Nerve OD1. Nerve OD2.</OD>
+          <OS>Nerve OS1. Nerve OS2.</OS>
+        </Nerve>
+        <Vitreous>
+          <OD>Vitreous OD.</OD>
+          <OS>Vitreous OS.</OS>
+        </Vitreous>
+        <Vessels>
+          <OD> Vessels OD.</OD>
+          <OS> Vessels OS.</OS>
+        </Vessels>
+        <Macula>
+          <OD>Macula OD.</OD>
+          <OS>Macula OS.</OS>
+        </Macula>
+        <Periphery>
+          <OD>Periph OD.</OD>
+          <OS>Periph OS.</OS>
+        </Periphery>
+        <GeneralValues>
+          <OD>General OD.</OD>
+          <OS>General OS.</OS>
+        </GeneralValues>
+      </PosteriorSegment>
+
+      <Gonio>
+        <!--All finding elements imported as text-->
+        <OD>Gonio OD. Second OD Finding.</OD>
+        <OS>Gonio OS.</OS>
+      </Gonio>
+
+      <ImpPlan>
+        <ProblemListItems>
+          <!--Imported as structured data based on valid ICD code, if Problem List Item not found for ICD code in MDI imported as text-->
+          <ProblemList ICD="362.52" IsPrimary="true">
+            <!--ICD must be populated and valid, one primary is preferred but not required-->
+            <Location Id="3">OS</Location>
+            <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+            <Description>Neovascular AMD</Description>
+            <!--Imported as MDI's problem list text-->
+            <Date>2015-01-01T00:00:00</Date>
+            <!--Valid datetime in consistent format, normally the date onset if available-->
+            <SummaryNotes></SummaryNotes>
+            <!--Imported as text, will be visible in chart note-->
+            <SummaryNotesHidden></SummaryNotesHidden>
+            <!--Imported as text, will be not visible in chart note-->
+          </ProblemList>
+          <ProblemList ICD="362.12" IsPrimary="false">
+            <!--ICD must be populated and valid, one primary is preferred but not required-->
+            <Location Id="2">OD</Location>
+            <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+            <Description>Prob List Item 2</Description>
+            <!--Imported as MDI's problem list text-->
+            <Date>2015-02-01T00:00:00</Date>
+            <!--Valid datetime in consistent format, normally the date onset if available-->
+            <SummaryNotes></SummaryNotes>
+            <!--Imported as text, will be visible in chart note-->
+            <SummaryNotesHidden></SummaryNotesHidden>
+            <!--Imported as text, will be not visible in chart note-->
+          </ProblemList>
+          <ProblemList ICD="362.11a" IsPrimary="false">
+            <!--ICD must be populated and valid, one primary is preferred but not required-->
+            <Location Id="1">OU</Location>
+            <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+            <Description>Prob List Item 2</Description>
+            <!--Imported as MDI's problem list text-->
+            <Date>2015-03-01T00:00:00</Date>
+            <!--Valid datetime in consistent format, normally the date onset if available-->
+            <SummaryNotes>Summary Notes 3</SummaryNotes>
+            <!--Imported as text, will be visible in chart note-->
+            <SummaryNotesHidden>Summary Notes Hidden 3 (Invalid ICD Code entered)</SummaryNotesHidden>
+            <!--Imported as text, will be not visible in chart note-->
+          </ProblemList>
+        </ProblemListItems>
+        <DiscussionItems>
+          <DiscussionItem>Discussion Item 1</DiscussionItem>
+          <!--Imported as text-->
+          <DiscussionItem>Discussion Item 2</DiscussionItem>
+          <!--Imported as text-->
+        </DiscussionItems>
+        <FollowUps>
+          <FollowUp>Follow up 1.</FollowUp>
+          <!--Imported as text-->
+          <FollowUp>Follow up 2.</FollowUp>
+          <!--Imported as text-->
+        </FollowUps>
+      </ImpPlan>
+
+      <Charges>
+        <!--Imported as structured data based on CPT code, ICD codes and modifiers are not imported-->
+        <Charge>
+          <EyeStructure>RT</EyeStructure>
+          <!--Must be RT, LT or Both-->
+          <CPT>92012</CPT>
+          <!--Must be valid 5 digit CPT code-->
+          <Description>OPHT CODE,    ESTABLISHED PATIENT, INTERMEDIATE</Description>
+          <!--Not used, only present for debugging purposes-->
+        </Charge>
+        <Charge>
+          <EyeStructure>Both</EyeStructure>
+          <!--Must be RT, LT or Both-->
+          <CPT>92134</CPT>
+          <!--Must be valid 5 digit CPT code-->
+          <Description>Scanning laser diagnostic imaging</Description>
+          <!--Not used, only present for debugging purposes-->
+        </Charge>
+      </Charges>
+
+    </Encounter>
+  </Encounters>
+
+  <SurgeryEncounters>
+    <!--Single top level encounter element will contain all surgery encounters-->
+
+    <SurgeryEncounter ID="113598" DoctorId="1" Date="2014-08-07T00:00:00">
+      <!--ID for reference only and not used by MDI import process, DoctorId required from structured list provided by MDI, datetime valid in consistent format-->
+      <!--May be able to key off source system appointment type?  Otherwise procedures need to be recognized as surgeries-->
+      <Surgeries>
+        <Surgery>
+          <Description>Surgery 1</Description>
+          <!--Imported as text-->
+          <OpNotes>Op note 1.</OpNotes>
+          <!--HTML format supported text-->
+          <Location Id="1">OU</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+        </Surgery>
+        <Surgery>
+          <Description>Surgery 2</Description>
+          <!--Imported as text-->
+          <OpNotes>Op note 2.</OpNotes>
+          <Location Id="2">OD</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+        </Surgery>
+      </Surgeries>
+
+      <ProblemListItems>
+        <!--Imported as structured data based on valid ICD code, if Problem List Item not found for ICD code in MDI imported as text-->
+        <ProblemList ICD="366.10" IsPrimary="true">
+          <!--ICD must be populated and valid, one primary is preferred but not required-->
+          <Location Id="1">OU</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+          <Description> Prob List Item 1</Description>
+          <!--Imported as MDI's problem list text-->
+          <Date>2015-01-01T00:00:00</Date>
+          <!--Date onset if available-->
+          <SummaryNotes>Summary Notes 1</SummaryNotes>
+          <!--Imported as text, will be visible in chart note-->
+          <SummaryNotesHidden>Summary Notes Hidden 1</SummaryNotesHidden>
+          <!--Imported as text, will be not visible in chart note-->
+        </ProblemList>
+        <ProblemList ICD="362.11a" IsPrimary="false">
+          <Location Id="2">OD</Location>
+          <!--Eye Location structured data list to be provided by MDI, data present in element used for debugging only-->
+          <Description>Prob List Item 2</Description>
+          <Date>2015-01-02T00:00:00</Date>
+          <SummaryNotes>Summary Notes 2</SummaryNotes>
+          <!--Imported as text, will be visible in chart note-->
+          <SummaryNotesHidden>Summary Notes Hidden 2 (ICD9 Code entered wasn't valid)</SummaryNotesHidden>
+          <!--Imported as text, will be not visible in chart note-->
+        </ProblemList>
+      </ProblemListItems>
+
+      <Charges>
+        <!--Imported as structured data based on CPT code, ICD codes and modifiers are not imported-->
+        <Charge>
+          <EyeStructure>RT</EyeStructure>
+          <!--Must be RT, LT or Both-->
+          <CPT>65712</CPT>
+          <!--Must be valid 5 digit CPT code-->
+          <Description>Removal of Ocular Implant</Description>
+          <!--Not used, only present for debugging purposes-->
+        </Charge>
+        <Charge>
+          <EyeStructure>Both</EyeStructure>
+          <!--Must be RT, LT or Both-->
+          <CPT>68770</CPT>
+          <!--Must be valid 5 digit CPT code-->
+          <Description>Closure of lacrimal fistula</Description>
+          <!--Not used, only present for debugging purposes-->
+        </Charge>
+      </Charges>
+
+    </SurgeryEncounter>
+
+  </SurgeryEncounters>
+
+  <NonEncounterProcedures>
+    <!--Imported as text-->
+    <NonEncounterProcedure>
+      <Date>2015-01-01T00:00:00</Date>
+      <!---->
+      <Doctor></Doctor>
+      <!--Imported as text-->
+      <PracticeLocation></PracticeLocation>
+      <!--Imported as text-->
+      <Type>Procedure</Type>
+      <!--Procedure, Diagnostic, or Surgery only-->
+      <Description>Avastin</Description>
+      <!--Imported as text-->
+      <EyeStructure>RT</EyeStructure>
+      <!--RT, LT, or Both only (This is StructureLocations in our System, these IDs won't change, so we could just allow for him to send RT, LT, or Both and then we map it on our side.)-->
+      <Comments></Comments>
+      <!--Imported as text-->
+
+    </NonEncounterProcedure>
+    <NonEncounterProcedure>
+      <Date>2015-01-01T00:00:00</Date>
+      <!---->
+      <Doctor></Doctor>
+      <!--Imported as text-->
+      <PracticeLocation></PracticeLocation>
+      <!--Imported as text-->
+      <Type>Procedure</Type>
+      <!--Procedure, Diagnostic, or Surgery only-->
+      <Description>Lucentis</Description>
+      <!--Imported as text-->
+      <EyeStructure>LT</EyeStructure>
+      <!--RT, LT, or Both only (This is StructureLocations in our System)-->
+      <Comments></Comments>
+      <!--Imported as text-->
+    </NonEncounterProcedure>
+  </NonEncounterProcedures>
+
+  <Images>
+    <Image>
+      <FilePath>Some FilePath Relative to the root of all the XML files</FilePath>
+      <PracticeFileTypeId>2</PracticeFileTypeId>
+      <PracticeFileSubTypeId></PracticeFileSubTypeId>
+      <VisualAcuityTypeId>2</VisualAcuityTypeId>
+      <ReceivedTimestamp>1934-10-18T00:00:00</ReceivedTimestamp>
+      <Comments>Additional Comments</Comments>
+    </Image>
+    <Image>
+      <FilePath>Some FilePath Relative to the root of all the XML files</FilePath>
+      <PracticeFileTypeId>7</PracticeFileTypeId>
+      <PracticeFileSubTypeId>2</PracticeFileSubTypeId>
+      <VisualAcuityTypeId>2</VisualAcuityTypeId>
+      <ReceivedTimestamp>1934-10-18T00:00:00</ReceivedTimestamp>
+      <Comments>Additional Comments</Comments>
+    </Image>
+    <Image>
+      <FilePath>Some FilePath Relative to the root of all the XML files</FilePath>
+      <PracticeFileTypeId>7</PracticeFileTypeId>
+      <PracticeFileSubTypeId></PracticeFileSubTypeId>
+      <VisualAcuityTypeId>3</VisualAcuityTypeId>
+      <ReceivedTimestamp>1934-10-18T00:00:00</ReceivedTimestamp>
+      <Comments>Additional Comments</Comments>
+    </Image>
+  </Images>
+
+</Patient>

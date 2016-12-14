@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xsd:simpleType name="EyeLocation">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="None"/>
+      <xs:enumeration value="OD"/>
+      <xs:enumeration value="OS"/>
+      <xs:enumeration value="OU"/>
+    </xs:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="EyeStructure">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="RT"/>
+      <xs:enumeration value="LT"/>
+      <xs:enumeration value="Both"/>
+    </xs:restriction>
+  </xsd:simpleType>
+  <xsd:complexType name="Resource">
+    <xsd:sequence>
+      <xsd:element name="Name" type="xsd:string" nillable="false" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Address">
+    <xsd:sequence>
+      <xsd:element name="AddressId" type="xsd:string" />
+      <xsd:element name="Name" type="xsd:string" />
+      <xsd:element name="Address1" type="xsd:string" />
+      <xsd:element name="Address2" type="xsd:string" />
+      <xsd:element name="City" type="xsd:string" />
+      <xsd:element name="State" type="xsd:string" />
+      <xsd:element name="Zip" type="xsd:string" />
+      <xsd:element name="Type" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Physician">
+    <xsd:sequence>
+      <xsd:element name="FirstName" type="xsd:string" />
+      <xsd:element name="MiddleName" type="xsd:string" />
+      <xsd:element name="LastName" type="xsd:string" />
+      <xsd:element name="Title" type="xsd:string" />
+      <xsd:element name="Address" type="Address" />
+      <xsd:element name="SSN" type="xsd:string" />
+      <xsd:element name="BirthDate" type="xsd:dateTime" />
+      <xsd:element name="Gender" type="xsd:string" />
+      <xsd:element name="HomePhone" type="xsd:string" />
+      <xsd:element name="WorkPhone" type="xsd:string" />
+      <xsd:element name="WorkExt" type="xsd:string" />
+      <xsd:element name="CellPhone" type="xsd:string" />
+      <xsd:element name="OtherPhone" type="xsd:string" />
+      <xsd:element name="Fax" type="xsd:string" />
+      <xsd:element name="Email" type="xsd:string" />
+      <xsd:element name="Company" type="xsd:string" />
+      <xsd:element name="NPI" type="xsd:string" />
+      <xsd:element name="FederalEmpNum" type="xsd:long" />
+      <xsd:element name="WorkersCompNum" type="xsd:long" />
+      <xsd:element name="MedicaidNum" type="xsd:long" />
+      <xsd:element name="LicenseNum" type="xsd:long" />
+      <xsd:element name="BcbsNum" type="xsd:long" />
+      <xsd:element name="TaxonomyCode" type="xsd:string" />
+      <xsd:element name="UPIN" type="xsd:string" />
+      <xsd:element name="MedicareNum" type="xsd:long" />
+      <xsd:element name="OtherId" type="xsd:string" />
+      <xsd:element name="DeaNum" type="xsd:long" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Patient">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PatientId" type="xsd:string" />
+        <xsd:element name="email" type="xsd:string" />
+        <xsd:element name="SSN" type="xsd:string" />
+        <xsd:element name="CreationDate" type="xsd:dateTime" />
+        <xsd:element name="Demographics">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="MedicalRecordNumber" type="xsd:string" />
+              <xsd:element name="LastName" type="xsd:string" />
+              <xsd:element name="FirstName" type="xsd:string" />
+              <xsd:element name="BirthDate" type="xsd:dateTime" />
+              <xsd:element name="Gender" type="xsd:string" />
+              <xsd:element name="Race" type="xsd:string" />
+              <xsd:element name="Ethnicity" type="xsd:string" />
+              <xsd:element name="MaritalStatus" type="xsd:string" />
+              <xsd:element name="Language" type="xsd:string" />
+              <xsd:element name="Title" type="xsd:string" />
+              <xsd:element name="Company" type="xsd:string" />
+              <xsd:element name="Provider" type="Physician" />
+              <xsd:element name="ProviderLastName" type="xsd:string" />
+              <xsd:element name="ReferringPhysician" type="Physician" />
+              <xsd:element name="PrimaryCare" type="Physician" />
+              <xsd:element name="Status" type="xsd:string" />
+              <xsd:element name="HomePhone" type="xsd:string" />
+              <xsd:element name="WorkPhone" type="xsd:string" />
+              <xsd:element name="CellPhone" type="xsd:string" />
+              <xsd:element name="OtherPhone" type="xsd:string" />
+              <xsd:element name="MainLocation" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="EmergencyContact">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="LastName" type="xsd:string" />
+              <xsd:element name="FirstName" type="xsd:string" />
+              <xsd:element name="Relation" type="xsd:string" />
+              <xsd:element name="HomePhone" type="xsd:string" />
+              <xsd:element name="WorkPhone" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Address" maxOccurs ="unbounded" type="Address" />
+        <xsd:element name="TreatmentNotes">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element maxOccurs="unbounded" name="TreatmentNote" type="xsd:string" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Encounters">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Encounter" maxOccurs ="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="ChiefComplaint" type="xsd:string" />
+                    <xsd:element name="HistoryOfThePresentIllness" type="xsd:string" />
+                    <xsd:element name="PSFH">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="MedicalHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="MedicalHistory">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Description" type="xsd:string"/>
+                                      <xsd:element name="Date" type="xsd:dateTime" />
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="FamilyHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="FamilyHistory">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Description" type="xsd:string" />
+                                      <xsd:element name="Note" type="xsd:string" />
+                                      <xsd:element name="Relationships">
+                                        <xsd:complexType>
+                                          <xsd:sequence>
+                                            <xsd:element maxOccurs="unbounded" name="Relationship">
+                                              <xsd:complexType>
+                                                <xsd:simpleContent>
+                                                  <xsd:extension base="xsd:string">
+                                                    <xsd:attribute name="RelationshipId" type="xsd:int" use="required" />
+                                                  </xsd:extension>
+                                                </xsd:simpleContent>
+                                              </xsd:complexType>
+                                            </xsd:element>
+                                          </xsd:sequence>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="SocialHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="SocialHistory">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="CategoryId" type="xsd:int" use="required" />
+                                        <xsd:attribute name="FindingId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="SurgicalHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="SurgicalHistory">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Description" type="xsd:string" />
+                                      <xsd:element name="Date" type="xsd:dateTime" />
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="AllergyHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="AllergyHistory">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Description" type="xsd:string" />
+                                      <xsd:element name="Date" type="xsd:dateTime" />
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ROSHistories">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="ROSHistory" type="xsd:string"/>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Medications">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Medication">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="DrugName" type="xsd:string" />
+                                <xsd:element name="Dose">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="DoseId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="DoseUnit">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="DoseUnitId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Administer">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="AdministerId" type="xsd:int" use="required" />
+                                        <xsd:attribute name="NonOcularAdministerId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Schedule">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="ScheduleId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Comments" type="xsd:string" />
+                                <xsd:element name="NewOrder" type="xsd:boolean" />
+                                <xsd:element name="StartDate" type="xsd:dateTime" />
+                                <xsd:element name="DCDate" type="xsd:dateTime" />
+                                <xsd:element name="RxNorm" type="xsd:string" />
+                                <xsd:element name="NDCs">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element maxOccurs="unbounded" name="NDC" type="xsd:string"/>
+                                    </xsd:sequence>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                              <xsd:attribute name="IsOcular" type="xsd:boolean" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="VisualAcuities">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="VisualAcuity">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Description" type="xsd:string" />
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                                <xsd:element name="OU" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="VisualAcuityID" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="IOPs">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="IOP">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Description" type="xsd:string" />
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                                <xsd:element name="DateTime" type="xsd:dateTime" />
+                              </xsd:sequence>
+                              <xsd:attribute name="IOPMethodID" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Dilation">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="EyeLocation" type="EyeLocation"/>
+                          <xsd:element name="DateTime" type="xsd:dateTime"/>
+                          <xsd:element name="Drops">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="Drop">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="DropId" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Refractions">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Refraction">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="SphereOD" type="xsd:string" />
+                                <xsd:element name="CylinderOD" type="xsd:string" />
+                                <xsd:element name="AxisOD" type="xsd:string" />
+                                <xsd:element name="VisualActuityDistanceOD" type="xsd:string" />
+                                <xsd:element name="VisualActuityNearOD" type="xsd:string" />
+                                <xsd:element name="PrismOD" type="xsd:string"/>
+                                <xsd:element name="AddOD" type="xsd:string" />
+                                <xsd:element name="CommentOD" type="xsd:string"/>
+                                <xsd:element name="SphereOS" type="xsd:string" />
+                                <xsd:element name="CylinderOS" type="xsd:string" />
+                                <xsd:element name="AxisOS" type="xsd:string" />
+                                <xsd:element name="VisualActuityDistanceOS" type="xsd:string" />
+                                <xsd:element name="VisualActuityNearOS" type="xsd:string" />
+                                <xsd:element name="PrismOS" type="xsd:string"/>
+                                <xsd:element name="AddOS" type="xsd:string" />
+                                <xsd:element name="CommentOS" type="xsd:string"/>
+                                <xsd:element name="RefractionTypeName" type="xsd:string" />
+                                <xsd:element name="OtherField" type="xsd:string" />
+                                <xsd:element name="Date" type="xsd:dateTime"/>
+                              </xsd:sequence>
+                              <xsd:attribute name="RefractionId" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="SpecialTests">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="SpecialTest">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Name" type="xsd:string" />
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="SpecialTestId" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="DiagnosticTests">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="DiagnosticTest">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Name" type="xsd:string" />
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="DiagnosticTestId" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Keratometry">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="K1OD" type="xsd:string" />
+                          <xsd:element name="K1ODAxis" type="xsd:string" />
+                          <xsd:element name="K2OD" type="xsd:string" />
+                          <xsd:element name="K2ODAxis" type="xsd:string" />
+                          <xsd:element name="K1OS" type="xsd:string" />
+                          <xsd:element name="K1OSAxis" type="xsd:string" />
+                          <xsd:element name="K2OS" type="xsd:string" />
+                          <xsd:element name="K2OSAxis" type="xsd:string" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Pachymetries">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Pachymetry">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS"  type="xsd:string"/>
+                                <xsd:element name="Datetime" type="xsd:dateTime" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ContactLenses">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ContactLens" maxOccurs="unbounded">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Date" type="xsd:dateTime" />
+                                <xsd:element name="SphereOD" type="xsd:string" />
+                                <xsd:element name="CylinderOD" type="xsd:string" />
+                                <xsd:element name="AxisOD" type="xsd:string" />
+                                <xsd:element name="VisualActuityDistanceOD" type="xsd:string" />
+                                <xsd:element name="VisualActuityNearOD" type="xsd:string" />
+                                <xsd:element name="PrismOD" type="xsd:string" />
+                                <xsd:element name="AddOD" type="xsd:string" />
+                                <xsd:element name="BrandNameOD" type="xsd:string" />
+                                <xsd:element name="BaseCurveOD" type="xsd:string" />
+                                <xsd:element name="DiameterOD" type="xsd:string" />
+                                <xsd:element name="CommentOD" type="xsd:string" />
+                                <xsd:element name="SphereOS" type="xsd:string" />
+                                <xsd:element name="CylinderOS" type="xsd:string" />
+                                <xsd:element name="AxisOS" type="xsd:string" />
+                                <xsd:element name="VisualActuityDistanceOS" type="xsd:string" />
+                                <xsd:element name="VisualActuityNearOS" type="xsd:string" />
+                                <xsd:element name="PrismOS" type="xsd:string" />
+                                <xsd:element name="AddOS" type="xsd:string" />
+                                <xsd:element name="BrandNameOS" type="xsd:string" />
+                                <xsd:element name="BaseCurveOS" type="xsd:string" />
+                                <xsd:element name="DiameterOS" type="xsd:string" />
+                                <xsd:element name="CommentOS" type="xsd:string" />
+                                <xsd:element name="RefractionTypeName" type="xsd:string" />
+                                <xsd:element name="OtherField" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="RefractionId" type="xsd:int" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Procedures">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Procedure">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Description" type="xsd:string" />
+                                <xsd:element name="ProcedureNotes" type="xsd:string" />
+                                <xsd:element name="Location" >
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="Id" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ExternalExam">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Motilty">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Pupils">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="ConfrontationalVisualField">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Adnexa">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="AnteriorSegment">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="LCS">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Cornea">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="AnteriorChamber">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Iris">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Lens">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="GeneralValues">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="PosteriorSegment">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="Nerve">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Vitreous">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Vessels">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Macula">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="Periphery">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="GeneralValues">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="OD" type="xsd:string" />
+                                <xsd:element name="OS" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Gonio">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="OD" type="xsd:string" />
+                          <xsd:element name="OS" type="xsd:string" />
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ImpPlan">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element name="ProblemListItems">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="ProblemList">
+                                  <xsd:complexType>
+                                    <xsd:sequence>
+                                      <xsd:element name="Location" >
+                                        <xsd:complexType>
+                                          <xsd:simpleContent>
+                                            <xsd:extension base="xsd:string">
+                                              <xsd:attribute name="Id" type="xsd:int" use="required" />
+                                            </xsd:extension>
+                                          </xsd:simpleContent>
+                                        </xsd:complexType>
+                                      </xsd:element>
+                                      <xsd:element name="Description" type="xsd:string" />
+                                      <xsd:element name="Date" type="xsd:dateTime" />
+                                      <xsd:element name="SummaryNotes" type="xsd:string" />
+                                      <xsd:element name="SummaryNotesHidden" type="xsd:string" />
+                                    </xsd:sequence>
+                                    <xsd:attribute name="ICD" type="xsd:string" use="required" />
+                                    <xsd:attribute name="IsPrimary" type="xsd:boolean" use="required" />
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="DiscussionItems">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="DiscussionItem" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                          <xsd:element name="FollowUps">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element maxOccurs="unbounded" name="FollowUp" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Charges">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Charge">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="EyeStructure" type="EyeStructure" />
+                                <xsd:element name="CPT" type="xsd:string" />
+                                <xsd:element name="Description" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="ID" type="xsd:string" use="required" />
+                  <xsd:attribute name="DoctorId" type="xsd:int" use="required" />
+                  <xsd:attribute name="Date" type="xsd:dateTime" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="SurgeryEncounters">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="SurgeryEncounter" maxOccurs ="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Surgeries">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Surgery">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Description" type="xsd:string" />
+                                <xsd:element name="OpNotes" type="xsd:string" />
+                                <xsd:element name="Location">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="Id" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="ProblemListItems">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="ProblemList">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="Location">
+                                  <xsd:complexType>
+                                    <xsd:simpleContent>
+                                      <xsd:extension base="xsd:string">
+                                        <xsd:attribute name="Id" type="xsd:int" use="required" />
+                                      </xsd:extension>
+                                    </xsd:simpleContent>
+                                  </xsd:complexType>
+                                </xsd:element>
+                                <xsd:element name="Description" type="xsd:string" />
+                                <xsd:element name="Date" type="xsd:dateTime" />
+                                <xsd:element name="SummaryNotes" type="xsd:string" />
+                                <xsd:element name="SummaryNotesHidden" type="xsd:string" />
+                              </xsd:sequence>
+                              <xsd:attribute name="ICD" type="xsd:string" use="required" />
+                              <xsd:attribute name="IsPrimary" type="xsd:boolean" use="required" />
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="Charges">
+                      <xsd:complexType>
+                        <xsd:sequence>
+                          <xsd:element maxOccurs="unbounded" name="Charge">
+                            <xsd:complexType>
+                              <xsd:sequence>
+                                <xsd:element name="EyeStructure" type="EyeStructure" />
+                                <xsd:element name="CPT" type="xsd:string" />
+                                <xsd:element name="Description" type="xsd:string" />
+                              </xsd:sequence>
+                            </xsd:complexType>
+                          </xsd:element>
+                        </xsd:sequence>
+                      </xsd:complexType>
+                    </xsd:element>
+                  </xsd:sequence>
+                  <xsd:attribute name="ID" type="xsd:int" use="required" />
+                  <xsd:attribute name="DoctorId" type="xsd:int" use="required" />
+                  <xsd:attribute name="Date" type="xsd:dateTime" use="required" />
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="NonEncounterProcedures">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element maxOccurs="unbounded" name="NonEncounterProcedure">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="Date" type="xsd:dateTime"  />
+                    <xsd:element name="Doctor" type="xsd:string" />
+                    <xsd:element name="PracticeLocation" type="xsd:string" />
+                    <xsd:element name="Type">
+                      <xsd:simpleType>
+                        <xsd:restriction base="xs:string">
+                          <xsd:enumeration value="Procedure"/>
+                          <xsd:enumeration value="Diagnostic"/>
+                          <xsd:enumeration value="Surgery"/>
+                        </xsd:restriction>
+                      </xsd:simpleType>
+                    </xsd:element>
+                    <xsd:element name="Description" type="xsd:string" />
+                    <xsd:element name="EyeStructure" type="EyeStructure" />
+                    <xsd:element name="Comments" type="xsd:string" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+        <xsd:element name="Images">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Image" maxOccurs="unbounded">
+                <xsd:complexType>
+                  <xsd:sequence>
+                    <xsd:element name="FilePath" type="xsd:string" nillable="false"  />
+                    <xsd:element name="PracticeFileTypeId" type="xsd:int" nillable="false"/>
+                    <xsd:element name="PracticeFileSubTypeId" type="xsd:int" nillable="true" />
+                    <xsd:element name="VisualAcuityTypeId" type="xsd:int" nillable="true"/>
+                    <xsd:element name="ReceivedTimestamp" type="xsd:dateTime" nillable="false" />
+                    <xsd:element name="FileDescription" type="xsd:string" />
+                    <xsd:element name="Comments" type="xsd:string" />
+                  </xsd:sequence>
+                </xsd:complexType>
+              </xsd:element>
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Physicians" type="Physician"/>
+
+  <xsd:element name="Appointment">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PatientId" type="xsd:long" nillable="false" />
+        <xsd:element name="AppointmentDate" type="xsd:dateTime" nillable="false" />
+        <xsd:element name="Resource" type="Resource" nillable="false"/>
+        <xsd:element name="StartTime" type="xsd:dateTime" nillable="false"/>
+        <xsd:element name="EndTime" type="xsd:dateTime" />
+        <xsd:element name="Duration" type="xsd:nonNegativeInteger" />
+        <xsd:element name="Cancelled" type="xsd:boolean" />
+        <xsd:element name="Location" type="xsd:string" nillable="false"/>
+        <xsd:element name="Notes" type="xsd:string" />
+        <xsd:element name="Event" type="xsd:boolean" />
+        <xsd:element name="Type" type="xsd:string" />
+        <xsd:element name="Purpose" type="xsd:string" />
+        <xsd:element name="Confirmed" type="xsd:boolean" />
+        <xsd:element name="NoShow" type="xsd:boolean" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <xsd:element name="Inventory">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="Name" type="xsd:string" />
+        <xsd:element name="Description" type="xsd:string" />
+        <xsd:element name="Price" type="xsd:decimal" />
+        <xsd:element name="LastCost" type="xsd:decimal" />
+        <xsd:element name="OnHand" type="xsd:nonNegativeInteger" />
+        <xsd:element name="Taxable1" type="xsd:boolean" />
+        <xsd:element name="Taxable2" type="xsd:boolean" />
+        <xsd:element name="Barcode" type="xsd:string" />
+        <xsd:element name="Billable" type="xsd:boolean" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Supplier">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="FirstName" type="xsd:string" />
+        <xsd:element name="MiddleName" type="xsd:string" />
+        <xsd:element name="LastName" type="xsd:string" />
+        <xsd:element name="Title" type="xsd:string" />
+        <xsd:element name="Address" type="Address" />
+        <xsd:element name="SSN" type="xsd:string" />
+        <xsd:element name="Birthday" type="xsd:dateTime" />
+        <xsd:element name="Gender" type="xsd:string" />
+        <xsd:element name="HomePhone" type="xsd:string" />
+        <xsd:element name="WorkPhone" type="xsd:string" />
+        <xsd:element name="WorkExt" type="xsd:string" />
+        <xsd:element name="CellPhone" type="xsd:string" />
+        <xsd:element name="Pager" type="xsd:string" />
+        <xsd:element name="OtherPhone" type="xsd:string" />
+        <xsd:element name="Fax" type="xsd:string" />
+        <xsd:element name="Email" type="xsd:string" />
+        <xsd:element name="Company" type="xsd:string" />
+        <xsd:element name="AccountNumber" type="xsd:string" />
+        <xsd:element name="PaymentMethod" type="xsd:string" />
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="Recall">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="PatientId" type="xsd:string" nillable="false"/>
+        <xsd:element name="Date" type="xsd:dateTime" nillable="false"/>
+        <xsd:element name="RecallTemplate" type="xsd:string" nillable="false"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xs:schema>

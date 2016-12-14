@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Vault.Data.Interfaces;
 using Vault.Data.Models;
 using Vault.Data.ViewModels;
+using CommonLibrary;
 
 namespace Vault.Controllers
 {
