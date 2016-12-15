@@ -20,8 +20,7 @@
         </div>
       </div>
 
-      <div id="customFieldsContainer">
-      </div>
+      <div id="customFieldsContainer"></div>
 
       <input id="addFieldBtn" name="addFieldBtn" type="button" value="Add Cabinet Field" class="btn btn-default" />
 
@@ -30,16 +29,16 @@
           <input id="submitBtn" name="submitBtn" type="button" value="Submit" class="btn btn-default" />
         </div>
       </div>
-  </div>
+    </div>
   }
+</div>
+  @section scripts{
+    <script>
+      var fieldNumberCount = 1;
 
-@section scripts{
-<script>
-  var fieldNumberCount = 1;
+      $("#addFieldBtn").on('click', function () {
 
-    $("#addFieldBtn").on('click', function () {
-
-      //only allow 20 custom fields
+        //only allow 20 custom fields
         if (fieldNumberCount < 21) {
           $.ajax({
             type: "GET",
@@ -56,37 +55,37 @@
 
       });
 
-  //json custom field constructor
-  function CustomField(fieldNumber, fieldName, dataType) {
-    this.FieldNumber = fieldNumber;
-    this.FieldName = fieldName;
-    this.DbType = dataType;
-  }
-
-  $("#submitBtn").on('click', function () {
-    var customFields = [];
-    var fieldNumber = 1;
-    //build CustomField json
-    $('[data-rowid]').each(function () {
-      var fieldName = $(this).find('#FieldName').val();
-      var fieldType = $(this).find('#DbType').val();
-      customFields.push(new CustomField(fieldNumber, fieldName, fieldType));
-      fieldNumber++;
-    });
-
-    $.ajax({
-      type: "POST",
-      url: '/Cabinet/Create',
-      data: {
-        cabinetName : $("#Name").val(),
-        customFields : customFields
-      },
-      error: function (msg) {
-        console.log(msg);
+      //json custom field constructor
+      function CustomField(fieldNumber, fieldName, dataType) {
+        this.FieldNumber = fieldNumber;
+        this.FieldName = fieldName;
+        this.DbType = dataType;
       }
-    })
 
-  });
-  
-</script>
-}
+      $("#submitBtn").on('click', function () {
+        var customFields = [];
+        var fieldNumber = 1;
+        //build CustomField json
+        $('[data-rowid]').each(function () {
+          var fieldName = $(this).find('#FieldName').val();
+          var fieldType = $(this).find('#DbType').val();
+          customFields.push(new CustomField(fieldNumber, fieldName, fieldType));
+          fieldNumber++;
+        });
+
+        $.ajax({
+          type: "POST",
+          url: '/Cabinet/Create',
+          data: {
+            cabinetName: $("#Name").val(),
+            customFields: customFields
+          },
+          error: function (msg) {
+            console.log(msg);
+          }
+        })
+
+      });
+
+    </script>
+  }

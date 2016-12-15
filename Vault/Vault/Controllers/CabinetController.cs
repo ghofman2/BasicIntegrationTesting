@@ -55,10 +55,24 @@ namespace Vault.Controllers
       Cabinet cabinet = new Cabinet() { Name = cabinetName, CustomFields = customFields.ToList() };
       _cabinetRepo.Save(cabinet);
 
-      List<Cabinet> cabinets = _cabinetRepo.GetAll();
-      List<CabinetModel> cabinetModels = Mapper.Map<List<Cabinet>, List<CabinetModel>>(cabinets);
-      return View("Index", cabinetModels);
+      return RedirectToAction("Index");
     }
+
+    public ActionResult Edit(int id)
+    {
+      Cabinet cabinet = _cabinetRepo.Get(id);
+      CabinetModel cabinetModel = Mapper.Map<Cabinet, CabinetModel>(cabinet);
+      return View("Edit", cabinetModel);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(String cabinetName, IEnumerable<CustomField> customFields)
+    {
+      //Cabinet cabinet = _cabinetRepo.Get(id);
+      //CabinetModel cabinetModel = Mapper.Map<Cabinet, CabinetModel>(cabinet);
+      return RedirectToAction("Index");
+    }
+
     #endregion
   }
 }

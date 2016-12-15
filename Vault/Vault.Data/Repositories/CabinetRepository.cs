@@ -17,15 +17,19 @@ namespace Vault.Data.Repositories
 
     public Cabinet Get(int id)
     {
-      return _db.Cabinets
+      var cabinet = _db.Cabinets
         .Include(x => x.Folders)
+        .Include(x => x.CustomFields)
         .Single(x => x.Id == id);
+
+      return cabinet;
     }
 
     public List<Cabinet> GetAll()
     {
       return _db.Cabinets
         .Include(x => x.Folders)
+        .Include(x => x.CustomFields)
         .AsNoTracking()
         .ToList();
     }
