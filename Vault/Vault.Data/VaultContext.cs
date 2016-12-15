@@ -31,5 +31,7 @@ namespace Vault.Data
     public virtual DbSet<File> Files { get; set; }
 
     public virtual DbSet<CustomField> CustomFields { get; set; }
+
+    public virtual DbSet<FileUpload> FileUploads { get; set; } 
   }
 }

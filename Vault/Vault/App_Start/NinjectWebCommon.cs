@@ -3,6 +3,7 @@
 
 namespace Vault.App_Start
 {
+  using Data.Interfaces;
   using Microsoft.Web.Infrastructure.DynamicModuleHelper;
   using Ninject;
   using Ninject.Extensions.Conventions;

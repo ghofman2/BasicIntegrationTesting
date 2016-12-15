@@ -9,37 +9,30 @@ using Vault.Data.Models;
 
 namespace Vault.Data.Repositories
 {
-  public class FileRepository : IFileRepository
+  public class FileUploadRepository : IFileUploadRepository
   {
-
     private VaultContext _db;
-    
-    public FileRepository(VaultContext db)
+
+    public FileUploadRepository(VaultContext db)
     {
       _db = db;
     }
-
-    public File Get(int id)
+    public FileUpload Get(int id)
     {
-      return _db.Files.Single(x => x.Id == id);
+      return _db.FileUploads.Single(x => x.Id == id);
     }
 
-    public File Save(File entity)
+    public FileUpload Save(FileUpload entity)
     {
-      if (entity.Folder == null)
-      {
-        throw new ArgumentException("A File requires a Folder.");
-      }
-
       if (entity.Id == 0)
       {
         //new entry
-        _db.Files.Add(entity);
+        _db.FileUploads.Add(entity);
       }
       else
       {
         //existing entry
-        _db.Files.Attach(entity);
+        _db.FileUploads.Attach(entity);
         _db.Entry(entity).State = EntityState.Modified;
       }
 

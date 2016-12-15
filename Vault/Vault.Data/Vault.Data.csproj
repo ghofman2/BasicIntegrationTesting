@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFileRepository.cs" />
+    <Compile Include="Interfaces\IFileUploadRepository.cs" />
     <Compile Include="Interfaces\IFolderRepository.cs" />
     <Compile Include="Interfaces\ICabinetRepository.cs" />
     <Compile Include="Migrations\201611141637457_Initial_Migration.cs" />
@@ -72,15 +73,29 @@
     <Compile Include="Migrations\201612132052308_ChangeIsDeletedType.Designer.cs">
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612151611245_FileUploadModel.cs" />
+    <Compile Include="Migrations\201612151611245_FileUploadModel.Designer.cs">
+      <DependentUpon>201612151611245_FileUploadModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612151619229_FileUpload.cs" />
+    <Compile Include="Migrations\201612151619229_FileUpload.Designer.cs">
+      <DependentUpon>201612151619229_FileUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612151652092_FileUploadExtension.cs" />
+    <Compile Include="Migrations\201612151652092_FileUploadExtension.Designer.cs">
+      <DependentUpon>201612151652092_FileUploadExtension.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Base\Entity.cs" />
     <Compile Include="Models\CustomField.cs" />
     <Compile Include="Models\Enums\DataTypes.cs" />
     <Compile Include="Models\File.cs" />
+    <Compile Include="Models\FileUpload.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\Cabinet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FileRepository.cs" />
+    <Compile Include="Repositories\FileUploadRepository.cs" />
     <Compile Include="Repositories\FolderRepository.cs" />
     <Compile Include="Repositories\CabinetRepository.cs" />
     <Compile Include="ViewModels\Base\EntityModel.cs" />
@@ -108,6 +123,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612132052308_ChangeIsDeletedType.resx">
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151611245_FileUploadModel.resx">
+      <DependentUpon>201612151611245_FileUploadModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151619229_FileUpload.resx">
+      <DependentUpon>201612151619229_FileUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612151652092_FileUploadExtension.resx">
+      <DependentUpon>201612151652092_FileUploadExtension.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />

@@ -4,6 +4,13 @@
 
 <div class="pageContainer">
   <h2>Create A Cabinet</h2>
+  @using (Html.BeginForm("UploadFile", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+  {
+    <label for="file">Upload CCDA file:</label>
+    <input type="file" name="file" id="file" /><br><br>
+    <input type="submit" value="Upload File" />
+  }
+
 
   @using (Html.BeginForm("Create", "Cabinet", FormMethod.Post, new { id = "createCabinetForm" }))
   {
