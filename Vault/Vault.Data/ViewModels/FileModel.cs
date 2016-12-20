@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vault.Data.ViewModels
+namespace Vault.Data.ViewModels 
 {
-  public class FileModel
+  public class FileModel : EntityModel
   {
     public string Name { get; set; }
 

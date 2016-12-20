@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Vault.Data.Models;
-using Vault.Data.ViewModels.Base;
 
 namespace Vault.Data.ViewModels
 {

@@ -93,12 +93,25 @@
     <Compile Include="Models\FileUpload.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\Cabinet.cs" />
+    <Compile Include="Models\XmlModels\AssignedEntity.cs" />
+    <Compile Include="Models\XmlModels\AssignedPerson.cs" />
+    <Compile Include="Models\XmlModels\Authenticator.cs" />
+    <Compile Include="Models\XmlModels\Author.cs" />
+    <Compile Include="Models\XmlModels\Custodian.cs" />
+    <Compile Include="Models\XmlModels\Informant.cs" />
+    <Compile Include="Models\XmlModels\LegalAuthenticator.cs" />
+    <Compile Include="Models\XmlModels\Patient.cs" />
+    <Compile Include="Models\XmlModels\PatientContainer.cs" />
+    <Compile Include="Models\XmlModels\Organization.cs" />
+    <Compile Include="Models\XmlModels\Performer.cs" />
+    <Compile Include="Models\XmlModels\Section.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FileRepository.cs" />
     <Compile Include="Repositories\FileUploadRepository.cs" />
     <Compile Include="Repositories\FolderRepository.cs" />
     <Compile Include="Repositories\CabinetRepository.cs" />
-    <Compile Include="ViewModels\Base\EntityModel.cs" />
+    <Compile Include="ViewModels\CcdaModel.cs" />
+    <Compile Include="ViewModels\EntityModel.cs" />
     <Compile Include="ViewModels\FileModel.cs" />
     <Compile Include="ViewModels\FolderModel.cs" />
     <Compile Include="ViewModels\CabinetModel.cs" />
@@ -134,7 +147,9 @@
       <DependentUpon>201612151652092_FileUploadExtension.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="Models\XmlModels\Address.cs" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

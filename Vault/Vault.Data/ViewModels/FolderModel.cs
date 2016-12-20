@@ -1,5 +1,4 @@
 ﻿using System;
-using Vault.Data.ViewModels.Base;
 
 namespace Vault.Data.ViewModels
 {

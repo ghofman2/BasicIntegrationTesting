@@ -1,0 +1,227 @@
+﻿@model Vault.Data.ViewModels.CcdaModel
+
+<div class="pageContainer">
+  <h2>CCDA Data</h2>
+  <h4>@Html.DisplayFor(x => x.DocumentTitle)</h4>
+
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Patient Data</div>
+    <div class="panel-body">
+      <label>First Name: </label>@Html.DisplayFor(x => x.PatientContainer.Patient.FirstName) 
+      <label>Last Name: </label>@Html.DisplayFor(x => x.PatientContainer.Patient.LastName)  
+      <label>Birth Date: </label>@Html.DisplayFor(x => x.PatientContainer.Patient.BirthDate)  
+      <label>Contact By:</label>@Html.DisplayFor(x => x.PatientContainer.TelephoneNumber) 
+      <div>
+        <h6>Demographics</h6>
+        <label>Gender:</label>@Html.DisplayFor(x => x.PatientContainer.Patient.Gender) 
+        <label>Race:</label>@Html.DisplayFor(x => x.PatientContainer.Patient.Race) 
+        <label>Ethnicity:</label>@Html.DisplayFor(x => x.PatientContainer.Patient.Ethnicity)  
+        <label>Language:</label>@Html.DisplayFor(x => x.PatientContainer.Patient.Language) 
+      </div>
+      <div>
+        <h6>Patient Address</h6>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.PatientContainer.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.PatientContainer.Address.City)  
+        <label>State:</label>@Html.DisplayFor(x => x.PatientContainer.Address.State)  
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.PatientContainer.Address.PostalCode)  
+      </div>
+      <div>
+        <h6>Provider Organization</h6>
+        <label>Name:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.Name)  
+        <label>Contact By:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.TelephoneNumber)  
+        <div>
+          <label>Street Address:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.Address.StreetAddress)
+          <label>City:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.Address.City)
+          <label>State:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.Address.State)
+          <label>Postal Code:</label>@Html.DisplayFor(x => x.PatientContainer.ProviderOrganization.Address.PostalCode)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  @if (!String.IsNullOrEmpty(Model.Author.LastName))
+  {
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Author Data</div>
+    <div class="panel-body">
+      <label>First Name:</label>@Html.DisplayFor(x => x.Author.FirstName)
+      <label>Last Name:</label>@Html.DisplayFor(x => x.Author.LastName)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.Author.TelephoneNumber) 
+      <div>
+        <h6>Author Address</h6>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.Author.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.Author.Address.City) 
+        <label>State:</label>@Html.DisplayFor(x => x.Author.Address.State) 
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.Author.Address.PostalCode)
+      </div>
+      <div>
+        <h6>Represented Organization</h6>
+        <label>Name:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.Name)
+        <label>Contact By:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.TelephoneNumber) 
+        <div>
+          <label>Street Address:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.Address.StreetAddress)
+          <label>City:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.Address.City)
+          <label>State:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.Address.State)
+          <label>Postal Code:</label>@Html.DisplayFor(x => x.Author.ProviderOrganization.Address.PostalCode)
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  <!--BEGIN-->
+@if (!String.IsNullOrEmpty(Model.Authenticator.LastName))
+{
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Authenticator Data</div>
+    <div class="panel-body">
+      <label>First Name:</label>@Html.DisplayFor(x => x.Authenticator.FirstName)
+      <label>Last Name:</label>@Html.DisplayFor(x => x.Authenticator.LastName)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.Authenticator.TelephoneNumber) 
+      <div>
+        <h6>Authenticator Address</h6>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.Authenticator.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.Authenticator.Address.City)
+        <label>State:</label>@Html.DisplayFor(x => x.Authenticator.Address.State)
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.Authenticator.Address.PostalCode)
+      </div>
+      <div>
+        <h6>Represented Organization</h6>
+        <label>Name:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.Name)
+        <label>Contact By:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.TelephoneNumber)
+        <div>
+          <label>Street Address:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.Address.StreetAddress)
+          <label>City:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.Address.City)
+          <label>State:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.Address.State)
+          <label>Postal Code:</label>@Html.DisplayFor(x => x.Authenticator.RepresentedOrganization.Address.PostalCode)
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (!String.IsNullOrEmpty(Model.LegalAuthenticator.LastName))
+{
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Legal Authenticator Data</div>
+    <div class="panel-body">
+      <label>First Name:</label>@Html.DisplayFor(x => x.LegalAuthenticator.FirstName)
+      <label>Last Name:</label>@Html.DisplayFor(x => x.LegalAuthenticator.LastName)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.LegalAuthenticator.TelephoneNumber)
+      <div>
+        <h6>Authenticator Address</h6>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.LegalAuthenticator.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.LegalAuthenticator.Address.City)
+        <label>State:</label>@Html.DisplayFor(x => x.LegalAuthenticator.Address.State)
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.LegalAuthenticator.Address.PostalCode)
+      </div>
+      <div>
+        <h6>Represented Organization</h6>
+        <label>Name:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.Name)
+        <label>Contact By:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.TelephoneNumber)
+        <div>
+          <label>Street Address:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.Address.StreetAddress)
+          <label>City:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.Address.City)
+          <label>State:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.Address.State)
+          <label>Postal Code:</label>@Html.DisplayFor(x => x.LegalAuthenticator.RepresentedOrganization.Address.PostalCode)
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (!String.IsNullOrEmpty(Model.Custodian.Name))
+{
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Custodian Data</div>
+    <div class="panel-body">
+      <label>Name:</label>@Html.DisplayFor(x => x.Custodian.Name)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.Custodian.TelephoneNumber)
+      <div>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.Custodian.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.Custodian.Address.City)
+        <label>State:</label>@Html.DisplayFor(x => x.Custodian.Address.State)
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.Custodian.Address.PostalCode)
+      </div>
+    </div>
+  </div>
+}
+
+@if (!String.IsNullOrEmpty(Model.Performer.AssignedPersonFirstName))
+{
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Performer Data</div>
+    <div class="panel-body">
+      <label>First Name:</label>@Html.DisplayFor(x => x.Performer.AssignedPersonFirstName)
+      <label>First Name:</label>@Html.DisplayFor(x => x.Performer.AssignedPersonLastName)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.Performer.TelephoneNumber)
+      <label>Occurrence Time:</label>@Html.DisplayFor(x => x.Performer.Time)
+      <div>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.Performer.Address.StreetAddress)
+        <label>City:</label>@Html.DisplayFor(x => x.Performer.Address.City)
+        <label>State:</label>@Html.DisplayFor(x => x.Performer.Address.State)
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.Performer.Address.PostalCode)
+      </div>
+    </div>
+  </div>
+}
+  <!--END-->
+
+@if (!String.IsNullOrEmpty(Model.Informant.LastName))
+{
+  <div class="panel panel-success">
+    <div class="panel-heading">CCDA Informant Data</div>
+    <div class="panel-body">
+      <label>First Name:</label>@Html.DisplayFor(x => x.Informant.FirstName) 
+      <label>Last Name:</label>@Html.DisplayFor(x => x.Informant.LastName)
+      <label>Contact By:</label>@Html.DisplayFor(x => x.Informant.TelephoneNumber) 
+      <div>
+        <h6>Author Address</h6>
+        <label>Street Address:</label>@Html.DisplayFor(x => x.Informant.Address.StreetAddress) 
+        <label>City:</label>@Html.DisplayFor(x => x.Informant.Address.City) 
+        <label>State:</label>@Html.DisplayFor(x => x.Informant.Address.State) 
+        <label>Postal Code:</label>@Html.DisplayFor(x => x.Informant.Address.PostalCode) 
+      </div>
+      <div>
+        <h6>Represented Organization</h6>
+        <label>Name:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.Name) 
+        <label>Contact By:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.TelephoneNumber)
+        <div>
+          <label>Street Address:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.Address.StreetAddress)
+          <label>City:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.Address.City) 
+          <label>State:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.Address.State) 
+          <label>Postal Code:</label>@Html.DisplayFor(x => x.Informant.RepresentedOrganization.Address.PostalCode)
+        </div>
+      </div>
+    </div>
+  </div>
+}
+  @foreach (var individual in Model.Sections)
+  {
+
+    <div class="panel panel-success">
+      <div class="panel-heading">@individual.Title</div>
+      <div class="panel-body">
+        @(new HtmlString(individual.FreeText))
+      </div>
+    </div>
+  }
+
+
+</div>
+
+<script>
+  $.each($('list'), function () {
+    $(this).contents().unwrap().wrap('<ul/>')
+  });
+  $.each($('item'), function () {
+    $(this).contents().unwrap().wrap('<li/>')
+  });
+
+</script>
+<style>
+  label {
+    text-decoration:underline;
+  }
+</style>
+
+

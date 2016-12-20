@@ -241,10 +241,10 @@
     <Content Include="Views\Cabinet\Index.cshtml" />
     <Content Include="Views\Cabinet\Create.cshtml" />
     <Content Include="Views\Cabinet\_CustomFields.cshtml" />
+    <Content Include="Views\FileUpload\DisplayCcda.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\FileUpload\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
