@@ -242,6 +242,7 @@
     <Content Include="Views\Cabinet\Create.cshtml" />
     <Content Include="Views\Cabinet\_CustomFields.cshtml" />
     <Content Include="Views\Cabinet\NextGen.cshtml" />
+    <Content Include="Views\Cabinet\NextGenIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

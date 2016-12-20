@@ -73,13 +73,38 @@
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ClinicalDocument.cs" />
+    <Compile Include="Models\MedicalField\ClinicalDocumentCode.cs" />
+    <Compile Include="Models\MedicalField\ClinicalDocumentId.cs" />
+    <Compile Include="Models\MedicalField\PatientEhinicGroup.cs" />
+    <Compile Include="Models\MedicalField\PatientGender.cs" />
+    <Compile Include="Models\MedicalField\PatientGuardianCode.cs" />
+    <Compile Include="Models\MedicalField\PatientId.cs" />
+    <Compile Include="Models\MedicalField\PatientLanguageCommunication.cs" />
+    <Compile Include="Models\MedicalField\PatientMaritalStatus.cs" />
+    <Compile Include="Models\MedicalField\PatientName.cs" />
+    <Compile Include="Models\MedicalField\PatientNameGiven.cs" />
+    <Compile Include="Models\MedicalField\PatientRaceCode.cs" />
+    <Compile Include="Models\MedicalField\PatientReligiousAffiliation.cs" />
+    <Compile Include="Models\MedicalField\SharedIdModel.cs" />
+    <Compile Include="Models\MedicalField\TemplateId.cs" />
+    <Compile Include="Models\MedicalField\TypeId.cs" />
+    <Compile Include="Models\Medical\Address.cs" />
     <Compile Include="Models\Base\Entity.cs" />
+    <Compile Include="Models\Medical\ClinicalDocument.cs" />
     <Compile Include="Models\CustomField.cs" />
     <Compile Include="Models\DictionaryModels.cs" />
     <Compile Include="Models\Enums\DataTypes.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\Folder.cs" />
     <Compile Include="Models\Cabinet.cs" />
+    <Compile Include="Models\Medical\Patient.cs" />
+    <Compile Include="Models\Medical\PatientGuardian.cs" />
+    <Compile Include="Models\Medical\PatientRole.cs" />
+    <Compile Include="Models\Medical\ProviderOrganization.cs" />
+    <Compile Include="Models\Medical\RecordTarget.cs" />
+    <Compile Include="Models\Medical\Telecom.cs" />
+    <Compile Include="Models\recordTarget.cs" />
     <Compile Include="Models\XmlFieldDictionaryModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\FileRepository.cs" />
@@ -112,7 +137,9 @@
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\RecordTarget\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -2,16 +2,17 @@
 using Ninject;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
-using System.Web;
+using System.Text.RegularExpressions;
 using System.Web.Mvc;
+using System.Xml;
+using System.Xml.Serialization;
 using Vault.Data.Interfaces;
 using Vault.Data.Models;
+using Vault.Data.Models.Medical;
 using Vault.Data.ViewModels;
-using CommonLibrary;
-using System.IO;
-using System.Xml.Serialization;
-using System.Xml;
 
 namespace Vault.Controllers
 {
@@ -129,11 +130,181 @@ namespace Vault.Controllers
       return dictionary;
     }
 
+    public ActionResult NextGenIndex()
+    {
+      //var models = new List<Vault.Data.Models.Medical.ClinicalDocument>();
+      var models = new List<Vault.Data.Models.ClinicalDocument>();
+
+      var tempFolder = Path.GetTempPath();
+      var xmlFolder = Path.Combine(tempFolder, "CcdaSamples");
+
+      var files = GetFileNames();
+
+      foreach (var file in files)
+      {
+        var model = GetClinicalDocument(Path.Combine(xmlFolder, file));
+
+        //var model = new Vault.Data.Models.Medical.ClinicalDocument();
+
+        //using (var reader = XmlReader.Create(Path.Combine(xmlFolder, file)))
+        //{
+        //  while (reader.Read())
+        //  {
+        //    if (!string.IsNullOrEmpty(reader.Name) && reader.IsStartElement() && reader.Name.Equals("recordTarget"))
+        //    {
+        //      var xmlStr = string.Format("<?xml version=\"1.0\"?><recordTarget>{0}</recordTarget>", reader.ReadInnerXml()).Replace("xmlns=\"urn:hl7-org:v3\"", "");
+        //      //var xmlStr = "<recordTarget><patientRole><id extension=\"110107073916280\" root=\"1.3.6.1.4.1.22812.11.99930.3\"/><addr use=\"H\"><streetAddressLine>1234 Six Forks</streetAddressLine><city>Portland</city><state>OR</state><postalCode>97005</postalCode><country>US</country></addr></patientRole></recordTarget>";
+
+        //      model.RecordTarget = GetRecordTarget(Regex.Replace(xmlStr, @">\s+<", "><"));
+        //    }
+        //  }
+        //}
+
+        models.Add(model);
+      }
+
+      //var model = GetRecordTargetFromFile("C:\\Users\\ylee\\Downloads\\simpleXml.xml");
+
+      return View("NextGenIndex", models);
+    }
+
+    public Vault.Data.Models.ClinicalDocument GetClinicalDocument(string path)
+    {
+      Vault.Data.Models.ClinicalDocument doc;
+
+      using (var stream = new FileStream(path, FileMode.Open))
+      {
+        var serializer = new XmlSerializer(typeof(Vault.Data.Models.ClinicalDocument));
+        doc = (Vault.Data.Models.ClinicalDocument)serializer.Deserialize(stream);
+      }
+
+      return doc;
+    }
+
+    public recordTarget GetRecordTarget(string xml)
+    {
+      var serializer = new XmlSerializer(typeof(recordTarget));
+
+      recordTarget result;
+
+      using (TextReader reader = new StringReader(xml))
+      {
+        result = (recordTarget)serializer.Deserialize(reader);
+      }
+
+      return result;
+    }
+
+    public recordTarget GetRecordTargetFromFile(string path)
+    {
+      recordTarget body;
+
+      using (var stream = new FileStream(path, FileMode.Open))
+      {
+        var serializer = new XmlSerializer(typeof(recordTarget));
+        body = (recordTarget)serializer.Deserialize(stream);
+      }
+
+      return body;
+    }
+
+    //public ActionResult NextGenIndex()
+    //{
+    //  var models = new List<Vault.Data.Models.Medical.ClinicalDocument>();
+
+    //  var tempFolder = Path.GetTempPath();
+    //  var xmlFolder = Path.Combine(tempFolder, "CcdaSamples");
+
+    //  var files = GetFileNames();
+
+    //  foreach (var file in files)
+    //  {
+    //    var model = new Vault.Data.Models.Medical.ClinicalDocument();
+
+    //    using (var reader = XmlReader.Create(Path.Combine(xmlFolder, file)))
+    //    {
+    //      while (reader.Read())
+    //      {
+    //        if (!string.IsNullOrEmpty(reader.Name) && reader.IsStartElement())
+    //        {
+    //          if (reader.Name.Equals("title"))
+    //          {
+    //            model.Title = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("effectiveTime"))
+    //          {
+    //            if (!string.IsNullOrEmpty(reader.GetAttribute("value")))
+    //            {
+    //              model.EffectiveTime = ParseDateTime(reader.GetAttribute("value"));
+    //            }
+    //          }
+    //          else if (reader.Name.Equals("recordTarget"))
+    //          {
+    //            model.RecordTarget = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("author"))
+    //          {
+    //            model.Author = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("informant"))
+    //          {
+    //            model.Informant = new List<string> { reader.ReadInnerXml() };
+    //          }
+    //          else if (reader.Name.Equals("custodian"))
+    //          {
+    //            model.Custodian = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("legalAuthenticator"))
+    //          {
+    //            model.LegalAuthenticator = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("authenticator"))
+    //          {
+    //            model.Authenticator = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("documentationOf"))
+    //          {
+    //            model.DocumentationOf = reader.ReadInnerXml();
+    //          }
+    //          else if (reader.Name.Equals("component"))
+    //          {
+    //            model.Component = reader.ReadInnerXml();
+    //          }
+    //        }
+    //      }
+    //    }
+
+    //    models.Add(model);
+    //  }
+
+    //  return View("NextGenIndex", models);
+    //}
+
+    private List<string> GetFileNames()
+    {
+      return new List<string> { "170.314(b)(1)InPt_Discharge Summary CED Type.xml",
+        "170.314(b)(2)InPt_Discharge Summary CED Type.xml",
+        "170.314(b)(7)AMB_Patient5_SummaryOfCareCED Type.xml",
+        "170.314(b)(7)AMB_Patient6_SummaryOfCareCED Type.xml",
+        "170.314(b)(7)InPt_Patient1_CCDCED Type.xml",
+        "170.314(b)(7)InPt_Patient2_CCDCED Type.xml",
+        "170.314(b)(7)InPt_Patient3_CCDCED Type.xml",
+        "170.314(e)(1)AMB_SummaryOfCareCED Type.xml",
+        "170.314(e)(1)InPt_Discharge Summary CED Type.xml",
+        "170.314(e)(2)AMB_SummaryOfCare CED Type.xml",
+        "170.314B1_Amb_SummaryOfCare.xml",
+        "170.314B2_Amb_CCD.xml",
+        "170.314B2_Amb_SummaryOfCare.xml"};
+    }
+
+    private DateTime ParseDateTime(string value)
+    {
+      return DateTime.ParseExact(value.Substring(0, 14), "yyyyMMddHHmmss", CultureInfo.InvariantCulture);
+    }
+
     //public ActionResult NextGen()
     //{
     //  var uniqueNodes = new List<string>();
-
-    //  //var xmlPaths = new List<string> { "CCDA_Sample_NextGen_JonesIsabella.xml", "CCDA_EnterpriseEHR_Sample.xml" };
 
     //  //var dictionary = new Dictionary<string, int>();
 

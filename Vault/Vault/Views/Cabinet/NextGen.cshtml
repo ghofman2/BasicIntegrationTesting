@@ -2,69 +2,76 @@
 
 @*@Styles.Render("~/Content/css")*@
 <div>
-<table class="table table-bordered table-striped sortable">
-  <thead>
-    <tr>
-      <th>Field</th>
-      @foreach (var dm in Model.DictionaryModel)
-      {
-        <th>@dm.FileNameShort</th>
-      }
-    </tr>
-  </thead>
-  <tbody>
-    @foreach (var field in Model.NodeList)
-    {
-      <tr>
-        <td>@field</td>
-        @foreach (var dm in Model.DictionaryModel)
-        {
-          <td>@dm.FieldDictionary[field]</td>
-        }
-      </tr>
-    }   
-</tbody>
-</table>
-
-
-@*@foreach (var m in Model)
-  {
-    <p>@m.FileName</p>
-      <table class="table table-bordered table-striped sortable">
-        <thead>
-          <tr>
-            <th>Field</th>
-            <th>Count</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach (KeyValuePair<string, int> entry in m.FieldDictionary)
-        {
-            <tr>
-              <td>@entry.Key</td>
-              <td>@entry.Value</td>
-            </tr>
-          }
-        </tbody>
-      </table>
-  }*@
-
-@*<table class="table table-bordered table-striped sortable">
+  <table class="table table-bordered table-striped sortable">
     <thead>
       <tr>
         <th>Field</th>
-        <th>Count</th>
+        @foreach (var dm in Model.DictionaryModel)
+      {
+          <th>@dm.FileNameShort</th>
+        }
       </tr>
     </thead>
     <tbody>
-      @foreach (KeyValuePair<string, int> entry in Model.FieldDictionary)
+      @foreach (var field in Model.NodeList)
       {
         <tr>
-          <td>@entry.Key</td>
-          <td>@entry.Value</td>
+          <td>@field</td>
+          @foreach (var dm in Model.DictionaryModel)
+          {
+            if (dm.FieldDictionary.ContainsKey(field))
+            {
+              <td>@dm.FieldDictionary[field]</td>
+            }
+            else
+            {
+              <td>0</td>
+            }
+          }
         </tr>
       }
     </tbody>
-  </table>*@
-@*<div>@Model.FieldNames</div>*@
+  </table>
+
+
+  @*@foreach (var m in Model)
+    {
+      <p>@m.FileName</p>
+        <table class="table table-bordered table-striped sortable">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach (KeyValuePair<string, int> entry in m.FieldDictionary)
+          {
+              <tr>
+                <td>@entry.Key</td>
+                <td>@entry.Value</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+    }*@
+
+  @*<table class="table table-bordered table-striped sortable">
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        @foreach (KeyValuePair<string, int> entry in Model.FieldDictionary)
+        {
+          <tr>
+            <td>@entry.Key</td>
+            <td>@entry.Value</td>
+          </tr>
+        }
+      </tbody>
+    </table>*@
+  @*<div>@Model.FieldNames</div>*@
 </div>
