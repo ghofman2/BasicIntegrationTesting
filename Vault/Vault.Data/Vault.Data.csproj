@@ -72,6 +72,10 @@
     <Compile Include="Migrations\201612132052308_ChangeIsDeletedType.Designer.cs">
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201612201714398_sync.cs" />
+    <Compile Include="Migrations\201612201714398_sync.Designer.cs">
+      <DependentUpon>201612201714398_sync.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ClinicalDocument.cs" />
     <Compile Include="Models\MedicalField\ClinicalDocumentCode.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201612132052308_ChangeIsDeletedType.resx">
       <DependentUpon>201612132052308_ChangeIsDeletedType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612201714398_sync.resx">
+      <DependentUpon>201612201714398_sync.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

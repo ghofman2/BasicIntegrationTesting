@@ -142,7 +142,7 @@ namespace Vault.Controllers
 
       foreach (var file in files)
       {
-        var model = GetClinicalDocument(Path.Combine(xmlFolder, file));
+      var model = GetClinicalDocument(Path.Combine(xmlFolder, file));
 
         //var model = new Vault.Data.Models.Medical.ClinicalDocument();
 
@@ -171,6 +171,12 @@ namespace Vault.Controllers
     public Vault.Data.Models.ClinicalDocument GetClinicalDocument(string path)
     {
       Vault.Data.Models.ClinicalDocument doc;
+
+      //remove colons from node attributes, serialization blows up with them there
+      string text = System.IO.File.ReadAllText(path);
+      text = text.Replace("xsi:type", "xsitype");
+      
+      System.IO.File.WriteAllText(path, text);
 
       using (var stream = new FileStream(path, FileMode.Open))
       {

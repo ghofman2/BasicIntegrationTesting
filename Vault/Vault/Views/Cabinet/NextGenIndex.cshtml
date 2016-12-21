@@ -1,9 +1,9 @@
-﻿@model IEnumerable<Vault.Data.Models.Medical.ClinicalDocument>
+﻿@model List<Vault.Data.Models.ClinicalDocument>
 
 <div>
   @foreach (var doc in Model)
   {
-    <p>@string.Format("{0} - {1}", doc.EffectiveTime.ToString(), doc.Title)</p>
+    <p>@string.Format("{0} - {1}", doc.effectiveTime.value.ToString(), doc.title)</p>
     @*<p>@doc.RecordTarget</p>*@
   }
 </div>

@@ -1603,7 +1603,9 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
+
+    private string countryField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -1645,7 +1647,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -1654,6 +1656,19 @@ namespace Vault.Data.Models
       set
       {
         this.postalCodeField = value;
+      }
+    }
+
+    /// <remarks/>
+    public string country
+    {
+      get
+      {
+        return this.countryField;
+      }
+      set
+      {
+        this.countryField = value;
       }
     }
   }
@@ -1859,7 +1874,9 @@ namespace Vault.Data.Models
 
     private uint postalCodeField;
 
-    private ClinicalDocumentAuthorAssignedAuthorAddrCountry countryField;
+    //private ClinicalDocumentAuthorAssignedAuthorAddrCountry countryField;
+
+    private string countryField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -1871,6 +1888,19 @@ namespace Vault.Data.Models
       set
       {
         this.streetAddressLineField = value;
+      }
+    }
+
+    /// <remarks/>
+    public string country
+    {
+      get
+      {
+        return this.countryField;
+      }
+      set
+      {
+        this.countryField = value;
       }
     }
 
@@ -1910,19 +1940,6 @@ namespace Vault.Data.Models
       set
       {
         this.postalCodeField = value;
-      }
-    }
-
-    /// <remarks/>
-    public ClinicalDocumentAuthorAssignedAuthorAddrCountry country
-    {
-      get
-      {
-        return this.countryField;
-      }
-      set
-      {
-        this.countryField = value;
       }
     }
   }
@@ -2214,7 +2231,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -2256,7 +2273,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -2385,7 +2402,7 @@ namespace Vault.Data.Models
 
     private string rootField;
 
-    private uint extensionField;
+    private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -2403,7 +2420,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint extension
+    public string extension
     {
       get
       {
@@ -2747,7 +2764,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -2789,7 +2806,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -3010,7 +3027,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     private string countryField;
 
@@ -3054,7 +3071,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -3273,7 +3290,7 @@ namespace Vault.Data.Models
 
     private string rootField;
 
-    private uint extensionField;
+    private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -3291,7 +3308,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint extension
+    public string extension
     {
       get
       {
@@ -3635,7 +3652,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -3677,7 +3694,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -3883,7 +3900,7 @@ namespace Vault.Data.Models
 
     private string rootField;
 
-    private uint extensionField;
+    private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -3901,7 +3918,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint extension
+    public string extension
     {
       get
       {
@@ -4245,7 +4262,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -4287,7 +4304,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -4789,7 +4806,7 @@ namespace Vault.Data.Models
 
     private string rootField;
 
-    private uint extensionField;
+    private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -4807,7 +4824,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint extension
+    public string extension
     {
       get
       {
@@ -5122,7 +5139,7 @@ namespace Vault.Data.Models
 
     private string titleField;
 
-    private ClinicalDocumentComponentComponentSectionText textField;
+    private string textField;
 
     private ClinicalDocumentComponentComponentSectionEntry[] entryField;
 
@@ -5180,7 +5197,8 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ClinicalDocumentComponentComponentSectionText text
+    [System.Xml.Serialization.XmlTextAttribute()]
+    public string text
     {
       get
       {
@@ -6239,11 +6257,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryEncounterEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -6263,11 +6281,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryEncounterEffectiveTimeHigh
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -6411,7 +6429,7 @@ namespace Vault.Data.Models
 
     private string extensionField;
 
-    private decimal rootField;
+    private string rootField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -6429,7 +6447,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal root
+    public string root
     {
       get
       {
@@ -6813,7 +6831,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -6855,7 +6873,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -7834,11 +7852,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryEncounterEntryRelationshipActEntryRelationshipObservationEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -7897,7 +7915,7 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryEncounterEntryRelationshipActEntryRelationshipObservationValueTranslation
   {
 
-    private decimal codeField;
+    private string codeField;
 
     private string displayNameField;
 
@@ -7907,7 +7925,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal code
+    public string code
     {
       get
       {
@@ -8729,7 +8747,7 @@ namespace Vault.Data.Models
 
     private string nullFlavorField;
 
-    private ushort valueField;
+    private string valueField;
 
     private bool valueFieldSpecified;
 
@@ -8749,7 +8767,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public ushort value
+    public string value
     {
       get
       {
@@ -8807,7 +8825,7 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryObservationValue
   {
 
-    private uint codeField;
+    private string codeField;
 
     private string displayNameField;
 
@@ -8817,7 +8835,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint code
+    public string code
     {
       get
       {
@@ -9060,7 +9078,7 @@ namespace Vault.Data.Models
 
     private string nullFlavorField;
 
-    private uint codeField;
+    private string codeField;
 
     private bool codeFieldSpecified;
 
@@ -9086,7 +9104,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint code
+    public string code
     {
       get
       {
@@ -9676,7 +9694,7 @@ namespace Vault.Data.Models
 
     private string unitField;
 
-    private decimal valueField;
+    private string valueField;
 
     private bool valueFieldSpecified;
 
@@ -9710,7 +9728,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal value
+    public string value
     {
       get
       {
@@ -10110,13 +10128,13 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryProcedureID
   {
 
-    private decimal rootField;
+    private string rootField;
 
     private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal root
+    public string root
     {
       get
       {
@@ -10385,11 +10403,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryProcedureEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -10409,11 +10427,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryProcedureEffectiveTimeHigh
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -11224,11 +11242,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntrySubstanceAdministrationEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -11250,7 +11268,7 @@ namespace Vault.Data.Models
 
     private string nullFlavorField;
 
-    private uint valueField;
+    private string valueField;
 
     private bool valueFieldSpecified;
 
@@ -11270,7 +11288,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -11952,13 +11970,13 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntrySubstanceAdministrationPerformerAssignedEntityID
   {
 
-    private decimal rootField;
+    private string rootField;
 
     private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal root
+    public string root
     {
       get
       {
@@ -12210,7 +12228,7 @@ namespace Vault.Data.Models
 
     private string rootField;
 
-    private uint extensionField;
+    private string extensionField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
@@ -12228,7 +12246,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint extension
+    public string extension
     {
       get
       {
@@ -12572,7 +12590,7 @@ namespace Vault.Data.Models
 
     private string stateField;
 
-    private ushort postalCodeField;
+    private string postalCodeField;
 
     /// <remarks/>
     public string streetAddressLine
@@ -12614,7 +12632,7 @@ namespace Vault.Data.Models
     }
 
     /// <remarks/>
-    public ushort postalCode
+    public string postalCode
     {
       get
       {
@@ -12908,11 +12926,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntrySubstanceAdministrationEntryRelationshipObservationValue
   {
 
-    private ushort valueField;
+    private string valueField;
 
     private bool valueFieldSpecified;
 
-    private uint codeField;
+    private string codeField;
 
     private bool codeFieldSpecified;
 
@@ -12924,7 +12942,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public ushort value
+    public string value
     {
       get
       {
@@ -12952,7 +12970,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint code
+    public string code
     {
       get
       {
@@ -13845,11 +13863,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryActEffectiveTimeLow
   {
 
-    private ulong valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public ulong value
+    public string value
     {
       get
       {
@@ -14314,11 +14332,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -14340,7 +14358,7 @@ namespace Vault.Data.Models
 
     private ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationValueTranslation translationField;
 
-    private uint codeField;
+    private string codeField;
 
     private bool codeFieldSpecified;
 
@@ -14367,7 +14385,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint code
+    public string code
     {
       get
       {
@@ -14457,7 +14475,7 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationValueTranslation
   {
 
-    private decimal codeField;
+    private string codeField;
 
     private string displayNameField;
 
@@ -14467,7 +14485,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public decimal code
+    public string code
     {
       get
       {
@@ -14665,7 +14683,7 @@ namespace Vault.Data.Models
 
     private ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationParticipantParticipantRolePlayingEntityCodeTranslation translationField;
 
-    private ushort codeField;
+    private string codeField;
 
     private string displayNameField;
 
@@ -14701,7 +14719,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public ushort code
+    public string code
     {
       get
       {
@@ -14810,7 +14828,7 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationParticipantParticipantRolePlayingEntityCodeTranslation
   {
 
-    private ushort codeField;
+    private string codeField;
 
     private string displayNameField;
 
@@ -14820,7 +14838,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public ushort code
+    public string code
     {
       get
       {
@@ -15500,11 +15518,11 @@ namespace Vault.Data.Models
   public partial class ClinicalDocumentComponentComponentSectionEntryActEntryRelationshipObservationEntryRelationshipObservationEffectiveTimeLow
   {
 
-    private uint valueField;
+    private string valueField;
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint value
+    public string value
     {
       get
       {
@@ -15528,7 +15546,7 @@ namespace Vault.Data.Models
 
     private string nullFlavorField;
 
-    private uint codeField;
+    private string codeField;
 
     private bool codeFieldSpecified;
 
@@ -15567,7 +15585,7 @@ namespace Vault.Data.Models
 
     /// <remarks/>
     [System.Xml.Serialization.XmlAttributeAttribute()]
-    public uint code
+    public string code
     {
       get
       {
