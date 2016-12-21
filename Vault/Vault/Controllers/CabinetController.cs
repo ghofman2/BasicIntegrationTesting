@@ -8,7 +8,9 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web.Mvc;
 using System.Xml;
+using System.Xml.Linq;
 using System.Xml.Serialization;
+using System.Xml.XPath;
 using Vault.Data.Interfaces;
 using Vault.Data.Models;
 using Vault.Data.Models.Medical;
@@ -142,28 +144,31 @@ namespace Vault.Controllers
 
       foreach (var file in files)
       {
-      var model = GetClinicalDocument(Path.Combine(xmlFolder, file));
+        Data.Models.ClinicalDocument model;
 
-        //var model = new Vault.Data.Models.Medical.ClinicalDocument();
+        model = GetClinicalDocument(Path.Combine(xmlFolder, file));
 
-        //using (var reader = XmlReader.Create(Path.Combine(xmlFolder, file)))
-        //{
-        //  while (reader.Read())
-        //  {
-        //    if (!string.IsNullOrEmpty(reader.Name) && reader.IsStartElement() && reader.Name.Equals("recordTarget"))
-        //    {
-        //      var xmlStr = string.Format("<?xml version=\"1.0\"?><recordTarget>{0}</recordTarget>", reader.ReadInnerXml()).Replace("xmlns=\"urn:hl7-org:v3\"", "");
-        //      //var xmlStr = "<recordTarget><patientRole><id extension=\"110107073916280\" root=\"1.3.6.1.4.1.22812.11.99930.3\"/><addr use=\"H\"><streetAddressLine>1234 Six Forks</streetAddressLine><city>Portland</city><state>OR</state><postalCode>97005</postalCode><country>US</country></addr></patientRole></recordTarget>";
-
-        //      model.RecordTarget = GetRecordTarget(Regex.Replace(xmlStr, @">\s+<", "><"));
-        //    }
-        //  }
-        //}
+        //so far unable to serialize all inner text from a section node's text node into the structuredBody.section.text property
+        //to overcome this, deserialize everything then go back and loop through each section building the text property for each via XPath
+        foreach (var structuredBody in model.component.structuredBody.ToList())
+        {
+          XmlNamespaceManager manager = new XmlNamespaceManager(new NameTable());
+          //must include namespace, todo: read this dyamically from file instead of hardcoding
+          var nameSpace = "urn:hl7-org:v3";
+          manager.AddNamespace("ns", nameSpace);
+          var docNav = new XPathDocument(Path.Combine(xmlFolder, file));
+          var nav = docNav.CreateNavigator();
+          var xpath = "//ns:title[text() = '" + structuredBody.section.title+ "']";
+          var nodeNav = nav.SelectSingleNode(xpath, manager);
+          nodeNav.MoveToParent();
+          nodeNav.MoveToChild("text", nameSpace);
+          var innerxml = nodeNav.InnerXml;
+          structuredBody.section.text = innerxml;
+        }
+        
 
         models.Add(model);
       }
-
-      //var model = GetRecordTargetFromFile("C:\\Users\\ylee\\Downloads\\simpleXml.xml");
 
       return View("NextGenIndex", models);
     }
@@ -175,7 +180,7 @@ namespace Vault.Controllers
       //remove colons from node attributes, serialization blows up with them there
       string text = System.IO.File.ReadAllText(path);
       text = text.Replace("xsi:type", "xsitype");
-      
+
       System.IO.File.WriteAllText(path, text);
 
       using (var stream = new FileStream(path, FileMode.Open))
@@ -288,7 +293,7 @@ namespace Vault.Controllers
 
     private List<string> GetFileNames()
     {
-      return new List<string> { "170.314(b)(1)InPt_Discharge Summary CED Type.xml",
+      return new List<string> {"170.314(b)(1)InPt_Discharge Summary CED Type.xml",
         "170.314(b)(2)InPt_Discharge Summary CED Type.xml",
         "170.314(b)(7)AMB_Patient5_SummaryOfCareCED Type.xml",
         "170.314(b)(7)AMB_Patient6_SummaryOfCareCED Type.xml",
